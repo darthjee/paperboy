@@ -44,6 +44,9 @@ case $ACTION in
   "populate")
     heroku run rake populate:all
     ;;
+  "build-local")
+    make PROJECT=local_paperboy build
+    ;;
   *)
     echo Usage:
     echo "$0 build # builds gem"
