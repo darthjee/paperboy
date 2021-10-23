@@ -12,7 +12,7 @@ services:
   #################### Base  ####################
 
   base: &base
-    image: darthjee/paperboy
+    image: darthjee/dev_paperboy
     volumes:
       - ./source:/home/app/app
     links:
