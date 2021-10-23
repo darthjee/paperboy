@@ -55,7 +55,7 @@ case $ACTION in
     heroku run rake populate:all
     ;;
   "build-local")
-    make PROJECT=local_paperboy build
+    make PROJECT=paperboy build
     ;;
   *)
     echo Usage:
