@@ -2,7 +2,7 @@
 
 function run() {
   download
-  heroku config | grep -v "^===" | sed -e "s/^\([^:]*\): */\1=/g" > .env.production
+  heroku config -s > .env.production
   clean_env & \
     PRODUCTION_IMAGE=$(docker_url) \
     docker-compose run paperboy_production /bin/bash
@@ -14,7 +14,7 @@ function clean_env() {
 }
 
 function app_name(){
-  echo $(heroku info -s | grep git_url | sed -e "s/.*\///g" | sed -e "s/\.git$//g")
+  echo $(heroku info -s | grep git_url | sed -e "s/.*\///g" | sed -e "s/\.git.*//g")
 }
 
 function download() {

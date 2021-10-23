@@ -42,7 +42,7 @@ describe User::Decorator do
     end
 
     context 'when user is invalid' do
-      let!(:user) { build(:user, login: nil) }
+      let!(:user) { build(:user, login: nil).tap(&:valid?) }
 
       let(:expected_json) do
         {
