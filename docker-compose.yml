@@ -88,5 +88,6 @@ services:
     links:
       - paperboy_mysql:mysql
 
-  volumes:
-    paperboy_mysql
+volumes:
+  paperboy_mysql:
+    external: false
