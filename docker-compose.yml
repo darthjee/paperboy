@@ -3,7 +3,7 @@ services:
   dev_paperboy_mysql:
     image: mysql:5.7
     container_name: dev_paperboy_mysql
-    env_file: .env
+    env_file: .env.dev
     environment:
       MYSQL_ROOT_PASSWORD: paperboy
     ports:
@@ -12,7 +12,7 @@ services:
   paperboy_mysql:
     image: mysql:5.7
     container_name: paperboy_mysql
-    env_file: .env
+    env_file: .env.dev
     environment:
       MYSQL_ROOT_PASSWORD: paperboy
     ports:
@@ -29,7 +29,7 @@ services:
       - ./source:/home/app/app
     links:
       - dev_paperboy_mysql:mysql
-    env_file: .env
+    env_file: .env.dev
 
 
   base_build:
@@ -41,7 +41,7 @@ services:
 
   production_base_build:
     image: darthjee/production_paperboy
-    env_file: .env
+    env_file: .env.dev
     environment:
       RAILS_ENV: production
     build:
@@ -75,6 +75,7 @@ services:
     container_name: paperboy_root
     command: /bin/bash
     depends_on: [base_build]
+
   paperboy_production:
     env_file: .env.production
     container_name: paperboy_production
