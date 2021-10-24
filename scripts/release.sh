@@ -26,39 +26,33 @@ function releaseLocal() {
   docker push darthjee/paperboy:$VERSION
 }
 
+checkLastCommit
+
 ACTION=$1
 
 case $ACTION in
   "install")
-    checkLastCommit
     curl https://cli-assets.heroku.com/install.sh | sh
     ;;
   "set-app")
-    checkLastCommit
     heroku git:remote -a $HEROKU_APP_NAME
     ;;
   "signin")
-    checkLastCommit
     heroku container:login
     ;;
   "build")
-    checkLastCommit
     make PROJECT=production_paperboy build
     ;;
   "build-heroku")
-    checkLastCommit
     make build-heroku
     ;;
   "release")
-    checkLastCommit
     make release
     ;;
   "migrate")
-    checkLastCommit
     heroku run rake db:migrate
     ;;
   "populate")
-    checkLastCommit
     heroku run rake populate:all
     ;;
   "build-local")
