@@ -11,6 +11,10 @@ function isLatestCommit() {
 }
 
 function checkLastCommit() {
+  if [ $FORCE_RELEASE ]; then
+    return 0;
+  fi
+
   if $(isLatestCommit); then
     echo "latest commit";
   else
