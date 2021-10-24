@@ -19,6 +19,13 @@ function checkLastCommit() {
   fi
 }
 
+function releaseLocal() {
+  VERSION=$(git describe --tags --abbrev=0)
+  docker tag darthjee/paperboy:latest darthjee/paperboy:$VERSION
+  docker push darthjee/paperboy:latest
+  docker push darthjee/paperboy:$VERSION
+}
+
 ACTION=$1
 
 case $ACTION in
@@ -56,6 +63,9 @@ case $ACTION in
     ;;
   "build-local")
     make PROJECT=paperboy build
+    ;;
+  "release-local")
+    releaseLocal
     ;;
   *)
     echo Usage:
