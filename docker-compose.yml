@@ -82,7 +82,7 @@ services:
     image: $PRODUCTION_IMAGE
 
   paperboy:
-    env_file: .env.production
+    env_file: .env
     container_name: paperboy
     image: darthjee/paperboy
     links:
