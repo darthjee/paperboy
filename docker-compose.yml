@@ -1,5 +1,14 @@
 version: '3'
 services:
+  dev_paperboy_mysql:
+    image: mysql:5.7
+    container_name: dev_paperboy_mysql
+    env_file: .env.dev
+    environment:
+      MYSQL_ROOT_PASSWORD: paperboy
+    ports:
+      - 127.0.0.1:$DEV_PAPERBOY_MYSQL_PORT:3306
+
   paperboy_mysql:
     image: mysql:5.7
     container_name: paperboy_mysql
@@ -7,36 +16,37 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: paperboy
     ports:
-      - 127.0.0.1:$PAPERBOY_MYSQL_PORT:3306
+      - 127.0.0.1:$LOCAL_PAPERBOY_MYSQL_PORT:3306
+    volumes:
+      - ./mysql:/var/lib/mysql
+
 
   #################### Base  ####################
 
   base: &base
-    image: darthjee/paperboy
+    image: darthjee/dev_paperboy
     volumes:
       - ./source:/home/app/app
     links:
-      - paperboy_mysql:mysql
-    env_file: .env
+      - dev_paperboy_mysql:mysql
+    env_file: .env.dev
 
 
   base_build:
     <<: *base
     build:
       context: .
-      dockerfile: Dockerfile.paperboy
+      dockerfile: Dockerfile.dev_paperboy
     command: echo done
 
   production_base_build:
     image: darthjee/production_paperboy
-    env_file: .env
+    env_file: .env.dev
     environment:
       RAILS_ENV: production
     build:
       context: .
       dockerfile: Dockerfile.production_paperboy
-    links:
-      - paperboy_mysql:mysql
     command: echo done
   #################### CONTAINERS ####################
 
@@ -65,7 +75,15 @@ services:
     container_name: paperboy_root
     command: /bin/bash
     depends_on: [base_build]
+
   paperboy_production:
     env_file: .env.production
     container_name: paperboy_production
     image: $PRODUCTION_IMAGE
+
+  paperboy:
+    env_file: .env
+    container_name: paperboy
+    image: darthjee/paperboy
+    links:
+      - paperboy_mysql:mysql

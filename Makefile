@@ -1,4 +1,4 @@
-PROJECT?=paperboy
+PROJECT?=dev_paperboy
 IMAGE?=$(PROJECT)
 BASE_VERSION?=0.0.1
 BASE_IMAGE?=$(DOCKER_ID_USER)/$(PROJECT)-base

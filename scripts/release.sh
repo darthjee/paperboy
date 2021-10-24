@@ -10,12 +10,27 @@ function isLatestCommit() {
   fi
 }
 
-if $(isLatestCommit); then
-  echo "latest commit";
-else
-  echo "Not last commit"
-  exit 0
-fi
+function checkLastCommit() {
+  if [ $FORCE_RELEASE ]; then
+    return 0;
+  fi
+
+  if $(isLatestCommit); then
+    echo "latest commit";
+  else
+    echo "Not last commit"
+    exit 0
+  fi
+}
+
+function releaseLocal() {
+  VERSION=$(git describe --tags --abbrev=0)
+  docker tag darthjee/paperboy:latest darthjee/paperboy:$VERSION
+  docker push darthjee/paperboy:latest
+  docker push darthjee/paperboy:$VERSION
+}
+
+checkLastCommit
 
 ACTION=$1
 
@@ -43,6 +58,12 @@ case $ACTION in
     ;;
   "populate")
     heroku run rake populate:all
+    ;;
+  "build-local")
+    make PROJECT=paperboy build
+    ;;
+  "release-local")
+    releaseLocal
     ;;
   *)
     echo Usage:
