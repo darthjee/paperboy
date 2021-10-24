@@ -18,7 +18,7 @@ services:
     ports:
       - 127.0.0.1:$LOCAL_PAPERBOY_MYSQL_PORT:3306
     volumes:
-      - paperboy_mysql:/var/lib/mysql
+      - ./mysql:/var/lib/mysql
 
 
   #################### Base  ####################
@@ -87,7 +87,3 @@ services:
     image: darthjee/paperboy
     links:
       - paperboy_mysql:mysql
-
-volumes:
-  paperboy_mysql:
-    external: false
