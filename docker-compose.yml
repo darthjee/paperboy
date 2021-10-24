@@ -24,7 +24,7 @@ services:
     <<: *base
     build:
       context: .
-      dockerfile: Dockerfile.paperboy
+      dockerfile: Dockerfile.dev_paperboy
     command: echo done
 
   production_base_build:
