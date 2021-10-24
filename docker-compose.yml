@@ -81,5 +81,12 @@ services:
     container_name: paperboy_production
     image: $PRODUCTION_IMAGE
 
+  paperboy:
+    env_file: .env.production
+    container_name: paperboy
+    image: darthjee/paperboy
+    links:
+      - paperboy_mysql:mysql
+
   volumes:
     paperboy_mysql
