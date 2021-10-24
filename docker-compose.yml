@@ -35,8 +35,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.production_paperboy
-    links:
-      - paperboy_mysql:mysql
     command: echo done
   #################### CONTAINERS ####################
 
