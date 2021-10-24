@@ -17,6 +17,8 @@ services:
       MYSQL_ROOT_PASSWORD: paperboy
     ports:
       - 127.0.0.1:$LOCAL_PAPERBOY_MYSQL_PORT:3306
+    volumes:
+      - paperboy_mysql:/var/lib/mysql
 
 
   #################### Base  ####################
@@ -77,3 +79,6 @@ services:
     env_file: .env.production
     container_name: paperboy_production
     image: $PRODUCTION_IMAGE
+
+  volumes:
+    paperboy_mysql
