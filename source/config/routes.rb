@@ -2,6 +2,7 @@
 
 Rails.application.routes.draw do
   get '/' => 'home#show', as: :home
+  get '/user_script' => 'user_script#show', as: :user_script, options: { format: :js }
 
   resources :users, only: [:index] do
     collection do
