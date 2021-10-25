@@ -1,1 +1,19 @@
-alert('hello');
+(function() {
+  var Paperboy = {
+
+    loadScript(url) {
+      var scrpt = document.createElement('script');
+      scrpt.setAttribute('type','text/javascript');
+      scrpt.setAttribute('src', url);
+      document.querySelector('head').appendChild(scrpt);
+    },
+
+    listScripts(tag) {
+      var url = window.location.origin,
+
+      alert(url);
+    }
+  }
+
+  Paperboy.listScripts();
+})();
