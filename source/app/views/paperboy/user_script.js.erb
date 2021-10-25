@@ -9,5 +9,9 @@
 (function() {
   'use strict';
 
-  var baseUrl = '<%= base_url %>';
+  var url = '<%= paperboy_path %>';
+  var scrpt = document.createElement('script');
+  scrpt.setAttribute('type','text/javascript');
+  scrpt.setAttribute('src', url);
+  document.querySelector('head').appendChild(scrpt);
 })();
