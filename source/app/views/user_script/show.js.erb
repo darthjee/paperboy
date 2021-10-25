@@ -9,5 +9,7 @@
 (function() {
   'use strict';
 
-  alert('hello <>');
+  var baseUrl = '<%= base_url %>';
+
+  alert('hello' + baseUrl);
 })();
