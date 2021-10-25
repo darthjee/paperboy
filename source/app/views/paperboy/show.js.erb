@@ -1,6 +1,8 @@
 (function() {
   var Paperboy = {
 
+    base_url: '<%= paperboy_url(format: :js) %>.js',
+
     loadScript(url) {
       var scrpt = document.createElement('script');
       scrpt.setAttribute('type','text/javascript');
@@ -9,9 +11,27 @@
     },
 
     listScripts(tag) {
-      var url = window.location.origin,
+      var localUrl = window.location.origin,
+        request = new XMLHttpRequest(),
+        url = '<%= scripts_url(format: :json) %>'
 
-      alert(url);
+      request.overrideMimeType("application/json");
+      request.responseType = 'json';
+      request.open('GET', url);
+
+      request.onload  = function() {
+        Paperboy.parseResponse(request);
+      };
+      request.send(null);
+    },
+
+    parseResponse(request) {
+      var index,
+        scripts = request.response;
+
+      for (var index = 0; index < scripts.length; index ++) {
+        this.loadScript(scripts[index].url);
+      }
     }
   }
 
