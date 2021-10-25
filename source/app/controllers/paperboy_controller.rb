@@ -3,8 +3,8 @@
 class UserScriptController < ApplicationController
    protect_from_forgery except: :show
 
-  def show
-    render :show, locals: {
+  def user_script
+    render :user_script, locals: {
       base_url: base_url
     }
   end
