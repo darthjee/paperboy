@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class UserScriptController < ApplicationController
-   protect_from_forgery except: :show
+   protect_from_forgery except: %i[show user_script]
 
   def show
   end
