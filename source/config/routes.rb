@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get '/paperboy.user' => 'paperboy#user_script', as: :user_script, defaults: { format: :js }
   get '/paperboy' => 'paperboy#show', as: :paperboy, defaults: { format: :js }
 
+  resources :scripts, only: [:index]
+
   resources :users, only: [:index] do
     collection do
       resources :login, only: [:create] do
