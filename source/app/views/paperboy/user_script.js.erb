@@ -1,0 +1,17 @@
+// ==UserScript==
+// @name         Paperboy loading script
+// @version      0.1
+// @description  Load and initialize paperboy scripts
+// @author       Fernando Darthjee Favini
+// @include      *
+// ==/UserScript==
+
+(function() {
+  'use strict';
+
+  var url = '<%= paperboy_url(format: :js) %>.js';
+  var scrpt = document.createElement('script');
+  scrpt.setAttribute('type','text/javascript');
+  scrpt.setAttribute('src', url);
+  document.querySelector('head').appendChild(scrpt);
+})();
