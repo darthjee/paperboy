@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class UserScriptController < ApplicationController
+class PaperboyController < ApplicationController
    protect_from_forgery except: %i[show user_script]
 
   def show
