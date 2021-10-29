@@ -2,8 +2,11 @@
 
 Rails.application.routes.draw do
   get '/' => 'home#show', as: :home
-  get '/paperboy.user' => 'paperboy#user_script', as: :user_script, defaults: { format: :js }
-  get '/paperboy' => 'paperboy#show', as: :paperboy, defaults: { format: :js }
+
+  resource :paperboy, defaults: { format: :js }, only: [] do
+    get '/paperboy.user' => :user_script
+    get '/' => :show
+  end
 
   resources :scripts, only: [:index] do
     get :content, on: :member
