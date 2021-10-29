@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'spec_helper'
+
 describe Session do
   describe 'scopes' do
     describe '.active' do

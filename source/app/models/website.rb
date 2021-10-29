@@ -4,7 +4,12 @@ class Website < ApplicationRecord
   PROTOCOLS = %w[http https]
   MAX_PORT  = 2**16 - 1
 
-  validates_presence_of :name, :domain
+  validates :name,
+            presence: true,
+            length: { maximum: 100 }
+  validates :domain,
+            presence: true,
+            length: { maximum: 100 }
   validates :port,
             numericality: {
               only_integer: true
