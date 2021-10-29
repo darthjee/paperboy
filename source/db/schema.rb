@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_21_210137) do
+ActiveRecord::Schema.define(version: 2021_10_29_092211) do
 
   create_table "sessions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -28,6 +28,13 @@ ActiveRecord::Schema.define(version: 2020_09_21_210137) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["login"], name: "index_users_on_login", unique: true
+  end
+
+  create_table "websites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", limit: 100, null: false
+    t.string "domain", limit: 100, null: false
+    t.integer "port", limit: 2, unsigned: true
+    t.string "protocol", limit: 5
   end
 
   add_foreign_key "sessions", "users"
