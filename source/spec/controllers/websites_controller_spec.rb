@@ -80,7 +80,7 @@ describe WebsitesController do
 
       context 'when there are too many websites' do
         let(:websites_count) { 21 }
-        let(:expected_object)   { Website.limit(10) }
+        let(:expected_object) { Website.limit(10) }
 
         it { expect(response).to be_successful }
 

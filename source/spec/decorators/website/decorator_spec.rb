@@ -36,13 +36,13 @@ describe Website::Decorator do
         let(:object) do
           build(
             :website,
-            name: nil,
+            name: nil
           )
         end
 
         let(:expected_errors) do
           {
-            name: ["can't be blank"],
+            name: ["can't be blank"]
           }
         end
 
@@ -67,7 +67,6 @@ describe Website::Decorator do
 
       let(:expected_json) do
         object.map do |website|
-
           website
             .as_json
             .slice(*attributes)
@@ -91,7 +90,7 @@ describe Website::Decorator do
 
         let(:expected_errors) do
           {
-            name: ["can't be blank"],
+            name: ["can't be blank"]
           }
         end
 
@@ -99,12 +98,11 @@ describe Website::Decorator do
 
         let(:expected_json) do
           object.map do |website|
-
             website
               .as_json
               .slice(*attributes)
               .merge(
-                errors: expected_errors,
+                errors: expected_errors
               )
           end.as_json
         end
