@@ -5,7 +5,7 @@ class WebsitesController < ApplicationController
 
   protect_from_forgery except: [:create]
 
-  resource_for :website
+  resource_for :website,
                paginated: true,
                per_page: 10
 end
