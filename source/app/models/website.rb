@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Website < ApplicationRecord
-  PROTOCOLS = %w[http https]
+  PROTOCOLS = %w[http https].freeze
   MAX_PORT  = 2**16 - 1
 
   validates :name,
@@ -24,4 +24,3 @@ class Website < ApplicationRecord
             },
             allow_nil: true
 end
-
