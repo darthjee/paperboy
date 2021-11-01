@@ -17,7 +17,7 @@
         controllerAs: "hc"
       }
     }, {
-      routes: ["/websites", "/websites/:id"]
+      routes: ["/websites", "/websites/new", "/websites/:id"]
     }];
     provider.$get().bindRoutes();
   }]);
