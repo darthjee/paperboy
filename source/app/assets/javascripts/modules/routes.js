@@ -16,6 +16,8 @@
         controller: "Home.Controller",
         controllerAs: "hc"
       }
+    }, {
+      routes: ["/websites", "websites/:id"]
     }];
     provider.$get().bindRoutes();
   }]);
