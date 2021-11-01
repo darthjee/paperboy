@@ -1,0 +1,46 @@
+<div class="card-deck mb-3">
+  <div class="card mb-4 shadow-sm">
+    <div class="card-header">
+      <h4 class="my-0 font-weight-normal">
+        Websites
+      </h4>
+    </div>
+    <div class="card-body">
+      <table class="table">
+        <thead>
+          <th scope="col">Name</th>
+          <th scope="col">Domain</th>
+          <th scope="col">Port</th>
+          <th scope="col">Protocol</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="2">
+              <%= angular_safe_link_to(:new_website, {}, class: "text-dark") do %>
+                + New Website
+              <% end %>
+            </td>
+          </tr>
+          <tr ng-repeat="website in gnc.data">
+            <td>
+              <%= angular_safe_link_to(:website, { id: "{{website.id}}" }, class: "text-dark") do %>
+                {{website.name}}
+              <% end %>
+            </td>
+            <td>{{website.domain}}</td>
+            <td>{{website.port}}</td>
+            <td>{{website.protocol}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <%= magicka_display('gnc') do |display|
+        display.pagination('pagination',
+          path_method: :websites
+        )
+      end %>
+
+    </div>
+  </div>
+</div>
+

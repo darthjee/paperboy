@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     get :content, on: :member
   end
 
+  resources :websites
+
   resources :users, only: [:index] do
     collection do
       resources :login, only: [:create] do
