@@ -8,7 +8,7 @@ class Script < ApplicationRecord
     expose :url
 
     def url
-      external_url
+      object.external_url.present? ? object.external_url : nil
     end
   end
 end

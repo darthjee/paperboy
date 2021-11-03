@@ -10,7 +10,8 @@ describe Script::IndexDecorator do
 
   describe '#to_json' do
     context 'when object is one entity' do
-      let(:object) { create(:script) }
+      let(:object) { create(:script, type) }
+      let(:type)   { :external_url }
 
       let(:expected_json) do
         {
@@ -21,6 +22,21 @@ describe Script::IndexDecorator do
 
       it 'returns expected json' do
         expect(decorator_json).to eq(expected_json)
+      end
+
+      context 'when script has content' do
+        let(:type) { :content }
+        
+        let(:expected_json) do
+          {
+            id: object.id,
+            url: nil,
+          }.deep_stringify_keys
+        end
+
+        it 'returns the script content route' do
+          expect(decorator_json).to eq(expected_json)
+        end
       end
 
       context 'when object is invalid but object has not been validated' do
