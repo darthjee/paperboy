@@ -17,7 +17,7 @@ describe Script::IndexDecorator do
         {
           id: object.id,
           url: object.external_url,
-          format: "url"
+          format: 'url'
         }.deep_stringify_keys
       end
 
@@ -37,7 +37,7 @@ describe Script::IndexDecorator do
           {
             id: object.id,
             url: expected_path,
-            format: "path"
+            format: 'path'
           }.deep_stringify_keys
         end
 
@@ -71,7 +71,7 @@ describe Script::IndexDecorator do
           {
             id: object.id,
             url: object.external_url,
-            format: "url",
+            format: 'url',
             errors: expected_errors
           }.deep_stringify_keys
         end
@@ -92,7 +92,7 @@ describe Script::IndexDecorator do
           {
             id: script.id,
             url: script.external_url,
-            format: "url"
+            format: 'url'
           }
         end.as_json
       end
@@ -125,7 +125,7 @@ describe Script::IndexDecorator do
             {
               id: script.id,
               url: script.external_url,
-              format: "url",
+              format: 'url',
               errors: expected_errors
             }
           end.as_json
