@@ -11,7 +11,7 @@
     listScripts(tag) {
       var localUrl = window.location.origin,
         request = new XMLHttpRequest(),
-        url = '<%= scripts_url(format: :json) %>'
+        url = '<%= domain_scripts_url(format: :json) %>'
 
       request.overrideMimeType("application/json");
       request.responseType = 'json';
