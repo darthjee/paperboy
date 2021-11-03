@@ -8,9 +8,14 @@ class Script < ApplicationRecord
 
     expose :id
     expose :url
+    expose :format
+
+    def format
+      external_url.present? ? :url : :path
+    end
 
     def url
-      object.external_url.present? ? object.external_url : content_url
+      external_url.present? ? external_url : content_url
     end
 
     def content_url

@@ -16,7 +16,8 @@ describe Script::IndexDecorator do
       let(:expected_json) do
         {
           id: object.id,
-          url: object.external_url
+          url: object.external_url,
+          format: "url"
         }.deep_stringify_keys
       end
 
@@ -35,7 +36,8 @@ describe Script::IndexDecorator do
         let(:expected_json) do
           {
             id: object.id,
-            url: expected_path
+            url: expected_path,
+            format: "path"
           }.deep_stringify_keys
         end
 
@@ -69,6 +71,7 @@ describe Script::IndexDecorator do
           {
             id: object.id,
             url: object.external_url,
+            format: "url",
             errors: expected_errors
           }.deep_stringify_keys
         end
@@ -88,7 +91,8 @@ describe Script::IndexDecorator do
         object.map do |script|
           {
             id: script.id,
-            url: script.external_url
+            url: script.external_url,
+            format: "url"
           }
         end.as_json
       end
@@ -121,6 +125,7 @@ describe Script::IndexDecorator do
             {
               id: script.id,
               url: script.external_url,
+              format: "url",
               errors: expected_errors
             }
           end.as_json
