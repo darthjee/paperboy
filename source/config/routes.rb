@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   end
 
   resources :websites
+  resources :scripts
 
   resources :users, only: [:index] do
     collection do
