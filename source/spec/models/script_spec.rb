@@ -8,7 +8,7 @@ describe Script, type: :model do
   end
 
   let(:external_url) { 'www.site.com' }
-  let(:content)      { nil }
+  let(:content)      { [nil, ''].sample }
 
   describe 'validations' do
     it do
@@ -39,7 +39,7 @@ describe Script, type: :model do
     end
 
     context 'when external_url is empty' do
-      let(:external_url) { nil }
+      let(:external_url) { [nil, ''].sample }
 
       it do
         expect(script).to validate_presence_of(:content)
