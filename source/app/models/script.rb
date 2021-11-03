@@ -10,4 +10,7 @@ class Script < ApplicationRecord
             length: { maximum: 255 }
   validates :content,
             length: { maximum: MAX_CONTENT_SIZE }
+  validates :content,
+            presence: true,
+            if: -> { external_url.blank? }
 end
