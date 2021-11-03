@@ -2,6 +2,8 @@
 
 class Script < ApplicationRecord
   MAX_CONTENT_SIZE = 2**16 - 1
+  REQUIRED_CONTENT_MESSAGE="Content or external url are required"
+  EXCLUSIVE_CONTENT_MESSAGE="Content and external url are mutually exclusive"
 
   validates :name,
             presence: true,
@@ -11,6 +13,9 @@ class Script < ApplicationRecord
   validates :content,
             length: { maximum: MAX_CONTENT_SIZE }
   validates :content,
-            presence: true,
+            presence: { message: REQUIRED_CONTENT_MESSAGE },
             if: -> { external_url.blank? }
+  validates :content,
+            absence: { message: EXCLUSIVE_CONTENT_MESSAGE },
+            if: -> { external_url.present? }
 end

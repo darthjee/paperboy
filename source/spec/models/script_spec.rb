@@ -3,7 +3,10 @@
 require 'spec_helper'
 
 describe Script, type: :model do
-  subject(:script) { build(:script) }
+  subject(:script) { build(:script, content: content, external_url: external_url) }
+
+  let(:external_url) { 'www.site.com' }
+  let(:content)      { nil }
 
   describe 'validations' do
     it do
@@ -34,10 +37,20 @@ describe Script, type: :model do
     end
 
     context "when external_url is empty" do
-      subject(:script) { build(:script, external_url: nil) }
+      let(:external_url) { nil }
 
       it do
         expect(script).to validate_presence_of(:content)
+          .with_message(described_class::REQUIRED_CONTENT_MESSAGE)
+      end
+    end
+
+    context "when content is not empty" do
+      let(:content) { 'My content' }
+
+      it do
+        expect(script).to validate_absence_of(:content)
+          .with_message(described_class::EXCLUSIVE_CONTENT_MESSAGE)
       end
     end
   end
