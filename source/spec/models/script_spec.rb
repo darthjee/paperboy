@@ -16,6 +16,15 @@ describe Script, type: :model do
     end
 
     it do
+      expect(script).not_to validate_presence_of(:content)
+    end
+
+    it do
+      expect(script).to validate_length_of(:content)
+        .is_at_most(2**16 - 1)
+    end
+
+    it do
       expect(script).not_to validate_presence_of(:external_url)
     end
 
