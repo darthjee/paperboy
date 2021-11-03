@@ -20,6 +20,11 @@
             Websites
           <% end %>
         </li>
+        <li class="nav-item p-2">
+          <%= angular_safe_link_to(:scripts, {}, class: 'nav-link text-dark') do %>
+            Scripts
+          <% end %>
+        </li>
       </ul>
       <ul class="nav navbar-nav">
         <li ng-hide="headerController.logged">
