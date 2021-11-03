@@ -25,12 +25,17 @@ describe Script::IndexDecorator do
       end
 
       context 'when script has content' do
-        let(:type) { :content }
-        
+        let(:type)       { :content }
+        let(:url_helper) { Rails.application.routes.url_helpers }
+
+        let(:expected_path) do
+          url_helper.content_domain_script_path(id: object.id, format: :js)
+        end
+
         let(:expected_json) do
           {
             id: object.id,
-            url: nil,
+            url: expected_path
           }.deep_stringify_keys
         end
 
