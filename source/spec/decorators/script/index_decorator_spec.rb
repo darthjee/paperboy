@@ -35,7 +35,7 @@ describe Script::IndexDecorator do
 
       context 'when object is invalid and object has been validated' do
         let(:object) do
-          build(:script,name: nil)
+          build(:script, name: nil)
         end
 
         let(:expected_errors) do
