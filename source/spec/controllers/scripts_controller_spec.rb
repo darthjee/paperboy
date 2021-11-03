@@ -3,8 +3,10 @@
 require 'spec_helper'
 
 describe ScriptsController do
+  let(:decorator) { Script::Decorator }
+
   let(:expected_json) do
-    Script::Decorator.new(expected_object).to_json
+    decorator.new(expected_object).to_json
   end
 
   describe 'GET new' do
@@ -46,6 +48,8 @@ describe ScriptsController do
   end
 
   describe 'GET index' do
+    let(:decorator) { Script::IndexDecorator }
+
     let(:scripts_count) { 1 }
     let(:parameters) { {} }
 
