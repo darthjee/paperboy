@@ -3,7 +3,9 @@
 require 'spec_helper'
 
 describe Script, type: :model do
-  subject(:script) { build(:script, content: content, external_url: external_url) }
+  subject(:script) do
+    build(:script, content: content, external_url: external_url)
+  end
 
   let(:external_url) { 'www.site.com' }
   let(:content)      { nil }
@@ -36,7 +38,7 @@ describe Script, type: :model do
         .is_at_most(255)
     end
 
-    context "when external_url is empty" do
+    context 'when external_url is empty' do
       let(:external_url) { nil }
 
       it do
@@ -45,7 +47,7 @@ describe Script, type: :model do
       end
     end
 
-    context "when content is not empty" do
+    context 'when content is not empty' do
       let(:content) { 'My content' }
 
       it do
