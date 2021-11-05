@@ -1,16 +1,18 @@
 <div class="form-group row">
-  <div class="col-5">
+  <div class="col-12">
     <label for="<%= field %>" class="control-label"><%= label %></label>
   </div>
-  <div class="col-7">
-    <input 
+</div>
+<div class="form-group row">
+  <div class="col-12">
+    <textarea 
        id="<%= field %>"
        name="<%= field %>"
        class="form-control"
        ng-class="{'is-invalid': <%= ng_errors %>}"
        ng-model="<%= ng_model %>"
-       placeholder="<%= placeholder %>"
-       type="text" />
+       placeholder="<%= placeholder %>">
+    </textarea>
 
     <div class="invalid-feedback" ng-repeat="error in <%= ng_errors %>">
       {{error}}
