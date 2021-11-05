@@ -3,9 +3,13 @@
 class ScriptsController < ApplicationController
   include OnePageApplication
 
-  protect_from_forgery except: %i[index content]
+  protect_from_forgery except: [:create]
 
-  def index; end
-
-  def content; end
+  resource_for :script,
+               except: :index
+  resource_for :script,
+               only: :index,
+               decorator: Script::IndexDecorator,
+               paginated: true,
+               per_page: 10
 end

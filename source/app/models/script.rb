@@ -4,6 +4,7 @@ class Script < ApplicationRecord
   MAX_CONTENT_SIZE = 2**16 - 1
   REQUIRED_CONTENT_MESSAGE = 'Content or external url are required'
   EXCLUSIVE_CONTENT_MESSAGE = 'Content and external url are mutually exclusive'
+  ALLOWED_ATTRIBUTES = %i[name content external_url].freeze
 
   validates :name,
             presence: true,
