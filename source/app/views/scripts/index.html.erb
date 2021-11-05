@@ -28,6 +28,11 @@
             </td>
             <td>{{script.url}}</td>
             <td>{{script.format}}</td>
+            <td>
+              <%= angular_safe_link_to(:edit_script, { id: "{{script.id}}" }, class: "text-dark") do %>
+                edit
+              <% end %>
+            </td>
           </tr>
         </tbody>
       </table>
