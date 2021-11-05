@@ -7,6 +7,7 @@ class Script < ApplicationRecord
     include Rails.application.routes.url_helpers
 
     expose :id
+    expose :name
     expose :url
     expose :format
 
