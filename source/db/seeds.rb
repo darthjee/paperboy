@@ -5,23 +5,23 @@
 # command (or created alongside the database with db:setup).
 #
 
-Website.create(
+Website.find_or_create_by(
   name: 'Localhost',
   domain: 'localhost',
   port: 3000
 )
 
-Website.create(
+Website.find_or_create_by(
   name: 'google',
   domain: 'google.com'
 )
 
-Script.create(
+Script.find_or_create_by(
   name: 'hello',
   content: 'alert("hello");'
 )
 
-Script.create(
+Script.find_or_create_by(
   name: 'question',
   content: 'alert("Who am I?");'
 )
