@@ -30,6 +30,11 @@
             <td>{{website.domain}}</td>
             <td>{{website.port}}</td>
             <td>{{website.protocol}}</td>
+            <td>
+              <%= angular_safe_link_to(:edit_website, { id: "{{website.id}}" }, class: "text-dark") do %>
+                edit
+              <% end %>
+            </td>
           </tr>
         </tbody>
       </table>
