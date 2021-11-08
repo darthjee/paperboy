@@ -19,6 +19,13 @@
             text: 'Save'
           )
         end %>
+        <%= form.only(:display) do
+          form.button(
+            classes: 'btn-primary',
+            href: angular_path_to(:edit_script, { id: "{{gnc.data.id}}" }),
+            text: 'Edit'
+          )
+        end %>
       </div>
     </div>
   </div>
