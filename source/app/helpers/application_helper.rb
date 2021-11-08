@@ -7,18 +7,16 @@ module ApplicationHelper
   end
 
   def angular_safe_link_to(path_method, path_args = {}, *args)
-    path = public_send(
-      path_method.to_s.gsub(/(_path)?$/, '_safe_path').to_s, path_args
-    )
-
-    link_to(
-      angular_path_to(path), *args
-    ) do
+    path = angular_path_to(path_method, path_args)
+    link_to(path, *args) do
       yield
     end
   end
 
-  def angular_path_to(path)
+  def angular_path_to(path_method, path_args = {})
+    path = public_send(
+      path_method.to_s.gsub(/(_path)?$/, '_safe_path').to_s, path_args
+    )
     "##{path}"
   end
 
