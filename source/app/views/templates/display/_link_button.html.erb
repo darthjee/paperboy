@@ -1,6 +1,9 @@
-<button ng-click="<%= ng_click %>"
-        ng-disabled="<%= ng_disabled %>"
-        type"submit"
-        class="btn <%= classes %>">
-        <%= text %> | (<%= href %>)
-</button>
+
+<a
+    href="<%= href %>"
+    ng-click="<%= ng_click %>"
+    ng-disabled="<%= ng_disabled %>"
+    type"submit"
+    class="btn btn-primary <%= classes %>">
+    <%= text %>
+</a>
