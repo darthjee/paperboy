@@ -2,7 +2,7 @@
 
 module Magicka
   # Button element representing an HTML +<button/>+
-  class Button < Magicka::Button
+  class LinkButton < Magicka::Button
     with_attribute_locals :href
     template_folder 'templates/display'
   end
