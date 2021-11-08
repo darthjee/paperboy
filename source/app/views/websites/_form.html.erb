@@ -25,7 +25,7 @@
             ng_click: 'gnc.save()',
             ng_disabled: 'gnc.ongoing',
             classes: 'btn-primary',
-            href: angular_path_to(:edit_website, { id: "{{website.id}}" }),
+            href: angular_path_to(:edit_website, { id: "{{gnc.data.id}}" }),
             text: 'Edit'
           )
         end %>
