@@ -5,6 +5,8 @@ class Website < ApplicationRecord
   MAX_PORT           = 2**16 - 1
   ALLOWED_ATTRIBUTES = %i[name domain port protocol].freeze
 
+  has_many :scripts, class_name: :WebsiteScript
+
   validates :name,
             presence: true,
             length: { maximum: 100 }
