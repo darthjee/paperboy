@@ -26,6 +26,6 @@ class Website < ApplicationRecord
               in: PROTOCOLS
             },
             allow_nil: true
-  
-  scope :for, -> (url) { UriQuery.new(self, url).websites }
+
+  scope :for, ->(url) { UriQuery.new(self, url).websites }
 end
