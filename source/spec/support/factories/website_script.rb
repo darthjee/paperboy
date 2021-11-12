@@ -4,6 +4,6 @@ FactoryBot.define do
   factory :website_script, class: 'WebsiteScript' do
     website
     script
-    sequence(:path)   { |n| "/path/to/#{n}" }
+    sequence(:path) { |n| "/path/to/#{n}" }
   end
 end

@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 2021_11_12_102101) do
     t.bigint "website_id", null: false
     t.bigint "script_id", null: false
     t.string "path"
-    t.index ["script_id", "website_id"], name: "index_website_scripts_on_script_id_and_website_id", unique: true
+    t.index %w[script_id website_id], name: "index_website_scripts_on_script_id_and_website_id", unique: true
     t.index ["website_id"], name: "index_website_scripts_on_website_id"
   end
 

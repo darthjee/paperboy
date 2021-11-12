@@ -76,7 +76,7 @@ describe WebsiteScript::Decorator do
 
         let(:expected_errors) do
           {
-            script: ["is invalid"]
+            script: ['is invalid']
           }
         end
 

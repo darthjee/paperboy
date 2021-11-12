@@ -24,4 +24,3 @@ describe WebsiteScript, type: :model do
     end
   end
 end
-
