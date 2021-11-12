@@ -56,4 +56,29 @@ describe Website::UriQuery, type: :model do
       end
     end
   end
+
+  context "when website was defined without a protocol" do
+    let(:protocol) { nil }
+
+    it "returns the wanted queried site" do
+      expect(query.websites).to include(website)
+    end
+  end
+
+  context "when website was defined without a port" do
+    let(:port) { nil }
+
+    it "returns the wanted queried site" do
+      expect(query.websites).to include(website)
+    end
+  end
+
+  context "when website was defined without a port or protocol" do
+    let(:port)     { nil }
+    let(:protocol) { nil }
+
+    it "returns the wanted queried site" do
+      expect(query.websites).to include(website)
+    end
+  end
 end
