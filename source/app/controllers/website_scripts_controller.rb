@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class DomainScriptsController < ApplicationController
+class WebsiteScriptsController < ApplicationController
   include OnePageApplication
 
   protect_from_forgery except: %i[index content]

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     get '/' => :show
   end
 
-  resources :domain_scripts, only: [:index] do
+  resources :website_scripts, only: [:index] do
     get :content, on: :member
   end
 
