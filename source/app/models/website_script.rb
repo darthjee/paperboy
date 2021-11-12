@@ -7,5 +7,7 @@ class WebsiteScript < ApplicationRecord
   validates_presence_of :website, :script
   validates :path,
             length: { maximum: 255 }
+
+  validates :script, uniqueness: { scope: :website }
 end
 
