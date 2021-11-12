@@ -10,13 +10,17 @@ class Website < ApplicationRecord
     end
 
     def websites
-      scope
+      scope.where(
+        domain: uri.host,
+        port: uri.port,
+        protocol: uri.scheme
+      )
     end
 
     private
 
     def uri
-      @uri ||= UIR.parse(url)
+      @uri ||= URI.parse(url)
     end
   end
 end

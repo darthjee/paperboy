@@ -15,10 +15,45 @@ describe Website::UriQuery, type: :model do
   let!(:website) do
     create(:website, protocol: protocol, domain: domain, port: port)
   end
+  let!(:other_website) { create(:website) }
 
   context "when all attributes match" do
     it "returns the wanted queried site" do
-      expect(query.website).to include(website)
+      expect(query.websites).to include(website)
+    end
+
+    it "does not return unwanted website" do
+      expect(query.websites).not_to include(other_website)
+    end
+
+    context "other site matches the domain" do
+      let!(:other_website) do
+        create(:website, domain: domain, protocol: :https, port: 8080)
+      end
+
+      it "does not return unwanted website" do
+        expect(query.websites).not_to include(other_website)
+      end
+    end
+
+    context "other site matches the domain and port" do
+      let!(:other_website) do
+        create(:website, domain: domain, protocol: :https, port: port)
+      end
+
+      it "does not return unwanted website" do
+        expect(query.websites).not_to include(other_website)
+      end
+    end
+
+    context "other site matches the domain and protocol" do
+      let!(:other_website) do
+        create(:website, domain: domain, protocol: :http, port: 8080)
+      end
+
+      it "does not return unwanted website" do
+        expect(query.websites).not_to include(other_website)
+      end
     end
   end
 end
