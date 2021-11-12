@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_02_114254) do
+ActiveRecord::Schema.define(version: 2021_11_12_102101) do
 
   create_table "scripts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", limit: 100, null: false
@@ -36,6 +36,14 @@ ActiveRecord::Schema.define(version: 2021_11_02_114254) do
     t.index ["login"], name: "index_users_on_login", unique: true
   end
 
+  create_table "website_scripts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "website_id", null: false
+    t.bigint "script_id", null: false
+    t.string "path"
+    t.index %w[script_id website_id], name: "index_website_scripts_on_script_id_and_website_id", unique: true
+    t.index ["website_id"], name: "index_website_scripts_on_website_id"
+  end
+
   create_table "websites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", limit: 100, null: false
     t.string "domain", limit: 100, null: false
@@ -44,4 +52,6 @@ ActiveRecord::Schema.define(version: 2021_11_02_114254) do
   end
 
   add_foreign_key "sessions", "users"
+  add_foreign_key "website_scripts", "scripts"
+  add_foreign_key "website_scripts", "websites"
 end

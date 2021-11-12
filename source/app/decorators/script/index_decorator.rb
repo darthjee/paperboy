@@ -20,7 +20,7 @@ class Script < ApplicationRecord
     end
 
     def content_url
-      content_domain_script_path(id: object.id, format: :js)
+      content_domain_script_path(id: id, format: :js)
     end
   end
 end
