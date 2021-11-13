@@ -9,7 +9,7 @@ module OnePageApplication
 
     layout :layout_for_page
     redirection_rule :render_root, :perform_angular_redirect?
-    skip_redirection_rule :render_root, :ajax?, :home?
+    skip_redirection_rule :render_root, :ajax?, :home?, :js?
   end
 
   private
@@ -24,6 +24,10 @@ module OnePageApplication
 
   def ajax?
     params[:ajax]
+  end
+
+  def js?
+    request.format.js?
   end
 
   def perform_angular_redirect?

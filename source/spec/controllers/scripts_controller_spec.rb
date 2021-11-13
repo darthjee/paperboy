@@ -254,6 +254,18 @@ describe ScriptsController do
       it { expect(response).to render_template('scripts/show') }
     end
 
+    context 'when requesting js', :cached do
+      before do
+        get :show, params: { format: :html, ajax: true, id: script_id }
+      end
+
+      it { expect(response).to be_successful }
+
+      it do
+        expect(response.body).to eq(script.content)
+      end
+    end
+
     context 'when requesting html and ajax is false' do
       before do
         get :show, params: { id: script_id }
