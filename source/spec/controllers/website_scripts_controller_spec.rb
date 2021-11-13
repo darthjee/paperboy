@@ -16,15 +16,16 @@ describe WebsiteScriptsController do
     let(:other_website) { create(:website) }
 
     let(:uri)             { URI.parse(url) }
-    let(:url)             { "https://www.google.com" }
+    let(:url)             { 'https://www.google.com' }
     let(:domain)          { uri.host }
     let(:port)            { uri.port }
     let(:protocol)        { uri.scheme }
 
-    let!(:other_script) { create(:website_script, website: other_website) }
     let!(:website_scripts) do
       create_list(:website_script, 3, website: website)
     end
+
+    before { create(:website_script, website: other_website) }
 
     context 'when finding more than one website', :not_cached do
       let(:expected_object) { WebsiteScript.all }

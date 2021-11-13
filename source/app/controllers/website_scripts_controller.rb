@@ -6,7 +6,7 @@ class WebsiteScriptsController < ApplicationController
   resource_for :website_script, only: :index
 
   def content; end
-  
+
   private
 
   def website_scripts
