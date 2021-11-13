@@ -11,7 +11,7 @@
     listScripts(tag) {
       var localUrl = window.location.origin,
         request = new XMLHttpRequest(),
-        url = '<%= domain_scripts_url(format: :json) %>'
+        url = '<%= website_scripts_url(format: :json) %>'
 
       request.overrideMimeType("application/json");
       request.responseType = 'json';
@@ -28,7 +28,7 @@
         scripts = request.response;
 
       for (var index = 0; index < scripts.length; index ++) {
-        this.loadScript(scripts[index].url);
+        this.loadScript(scripts[index].script.url);
       }
     }
   }
