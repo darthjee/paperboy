@@ -28,7 +28,7 @@
         scripts = request.response;
 
       for (var index = 0; index < scripts.length; index ++) {
-        this.loadScript(scripts[index].url);
+        this.loadScript(scripts[index].script.url);
       }
     }
   }
