@@ -10,6 +10,14 @@ class WebsiteScriptsController < ApplicationController
   private
 
   def website_scripts
-    WebsiteScript.all
+    WebsiteScript.where(website: websites)
+  end
+
+  def websites
+    Website.for(request_url)
+  end
+
+  def request_url
+    params.require(:url)
   end
 end

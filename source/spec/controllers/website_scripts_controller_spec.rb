@@ -11,21 +11,56 @@ describe WebsiteScriptsController do
 
   describe 'GET index' do
     let(:website) do
-      create(:website, port: port, protocol: protocol, port: port)
+      create(:website, port: port, protocol: protocol, domain: domain)
     end
+    let(:other_website) { create(:website) }
 
-    let!(:other_script) { create(:website_script) }
+    let(:uri)             { URI.parse(url) }
+    let(:url)             { "https://www.google.com" }
+    let(:domain)          { uri.host }
+    let(:port)            { uri.port }
+    let(:protocol)        { uri.scheme }
+
+    let!(:other_script) { create(:website_script, website: other_website) }
     let!(:website_scripts) do
       create_list(:website_script, 3, website: website)
     end
 
+    context 'when finding more than one website', :not_cached do
+      let(:expected_object) { WebsiteScript.all }
+
+      let(:other_website) do
+        create(:website, port: nil, protocol: nil, domain: domain)
+      end
+
+      before do
+        get :index, params: { format: :json, url: url }
+      end
+
+      it { expect(response).to be_successful }
+
+      it 'returns scripts serialized' do
+        expect(response.body).to eq(expected_json)
+      end
+    end
+
     context 'when requesting for the domain', :not_cached do
       let(:expected_object) { website_scripts }
-      let(:uri)             { URI.parse(url) }
-      let(:url)             { "https://www.google.com" }
-      let(:domain)          { uri.host }
-      let(:port)            { uri.port }
-      let(:protocol)        { uri.scheme }
+
+      before do
+        get :index, params: { format: :json, url: url }
+      end
+
+      it { expect(response).to be_successful }
+
+      it 'returns scripts serialized' do
+        expect(response.body).to eq(expected_json)
+      end
+    end
+
+    context 'when not finding a website config', :not_cached do
+      let(:expected_object) { [] }
+      let(:domain) { 'other.com' }
 
       before do
         get :index, params: { format: :json, url: url }
