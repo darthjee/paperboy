@@ -241,7 +241,7 @@ describe ScriptsController do
   describe 'GET show' do
     render_views
 
-    let(:script)    { create(:script) }
+    let(:script)    { create(:script, :content) }
     let(:script_id) { script.id }
 
     context 'when requesting html and ajax is true', :cached do
@@ -256,13 +256,13 @@ describe ScriptsController do
 
     context 'when requesting js', :cached do
       before do
-        get :show, params: { format: :html, ajax: true, id: script_id }
+        get :show, params: { format: :js, id: script_id }
       end
 
       it { expect(response).to be_successful }
 
       it do
-        expect(response.body).to eq(script.content)
+        expect(response.body.strip).to eq(script.content)
       end
     end
 
