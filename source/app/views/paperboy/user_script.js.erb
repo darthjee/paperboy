@@ -13,5 +13,8 @@
   var scrpt = document.createElement('script');
   scrpt.setAttribute('type','text/javascript');
   scrpt.setAttribute('src', url);
+  scrpt.setAttribute('referrerpolicy', 'no-referrer');
+  scrpt.setAttribute('crossorigin', 'anonymous');
+  scrpt.setAttribute('defer', 'defer');
   document.querySelector('head').appendChild(scrpt);
 })();
