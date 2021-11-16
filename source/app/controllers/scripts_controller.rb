@@ -3,7 +3,7 @@
 class ScriptsController < ApplicationController
   include OnePageApplication
 
-  protect_from_forgery except: [:create, :show]
+  protect_from_forgery except: %i[create show]
 
   resource_for :script,
                except: :index
