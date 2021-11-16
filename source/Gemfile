@@ -35,7 +35,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'arstotzka',    '~> 1.6.2'
-gem 'azeroth',      '>= 0.8.1'
+gem 'azeroth',      '>= 0.8.2'
 gem 'bower-rails',  '~> 0.12.0'
 gem 'magicka',      '~> 0.6.0'
 gem 'newrelic_rpm', '~> 6.9.0.363'

@@ -5,8 +5,6 @@ class ScriptsController < ApplicationController
 
   protect_from_forgery except: [:create, :show]
 
-  helper_method :script
-
   resource_for :script,
                except: :index
   resource_for :script,
