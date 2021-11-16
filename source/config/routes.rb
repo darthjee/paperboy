@@ -8,9 +8,7 @@ Rails.application.routes.draw do
     get '/' => :show
   end
 
-  resources :website_scripts, defaults: { format: :json }, only: [:index] do
-    get :content, on: :member
-  end
+  resources :website_scripts, defaults: { format: :json }, only: [:index]
 
   resources :websites
   resources :scripts

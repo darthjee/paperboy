@@ -31,7 +31,7 @@ describe Script::IndexDecorator do
         let(:url_helper) { Rails.application.routes.url_helpers }
 
         let(:expected_path) do
-          url_helper.content_website_script_path(id: object.id, format: :js)
+          url_helper.script_path(id: object.id, format: :js)
         end
 
         let(:expected_json) do
