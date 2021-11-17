@@ -28,7 +28,7 @@ fdescribe Website::UserScript, type: :model do
     context 'when protocol is missing' do
       let(:protocol) {  nil }
 
-      xit 'adds wild cards for protocol' do
+      it 'adds wild cards for protocol' do
         expect(user_script.location).to eq('*://localhost:3000/*')
       end
     end
@@ -36,7 +36,7 @@ fdescribe Website::UserScript, type: :model do
     context 'when port is missing' do
       let(:port) { nil }
 
-      xit 'adds wild cards for port' do
+      it 'adds wild cards for port' do
         expect(user_script.location).to eq('http://localhost:*/*')
       end
     end
@@ -45,7 +45,7 @@ fdescribe Website::UserScript, type: :model do
       let(:protocol) { nil }
       let(:port)     { nil }
 
-      xit 'adds wild cards for protocol and port' do
+      it 'adds wild cards for protocol and port' do
         expect(user_script.location).to eq('*://localhost:*/*')
       end
     end
