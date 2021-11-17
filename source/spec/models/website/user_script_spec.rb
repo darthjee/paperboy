@@ -2,18 +2,26 @@
 
 require 'spec_helper'
 
-describe Website::UserScript, type: :model do
+fdescribe Website::UserScript, type: :model do
   subject(:user_script) { described_class.new(website) }
 
+  let(:website) { create(:website) }
+
   describe '#name' do
-    xit "does something"
+    it 'delegates to website' do
+      expect(user_script.name).to eq(website.name)
+    end
   end
 
   describe '#domain' do
-    xit "does something"
+    it 'delegates to website' do
+      expect(user_script.domain).to eq(website.domain)
+    end
   end
 
   describe '#scripts' do
-    xit 'does somethiong'
+    it 'delegates to website' do
+      expect(user_script.scripts).to eq(website.scripts)
+    end
   end
 end
