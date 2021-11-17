@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-fdescribe Website::UserScript, type: :model do
+describe Website::UserScript, type: :model do
   subject(:user_script) { described_class.new(website) }
 
   let(:domain)   { 'localhost' }
@@ -10,6 +10,9 @@ fdescribe Website::UserScript, type: :model do
   let(:protocol) { :http }
   let(:website) do
     create(:website, domain: domain, port: port, protocol: protocol)
+  end
+  let!(:website_scripts) do
+    create_list(:website_script, 3, website: website)
   end
 
   describe '#name' do
@@ -52,8 +55,14 @@ fdescribe Website::UserScript, type: :model do
   end
 
   describe '#scripts' do
-    it 'delegates to website' do
-      expect(user_script.scripts).to eq(website.scripts)
+    let(:expected_scripts) do
+      website_scripts.map do |script|
+        WebsiteScript::UserScript.new(script)
+      end
+    end
+
+    it 'wrap website scripts' do
+      expect(user_script.scripts).to eq(expected_scripts)
     end
   end
 end

@@ -4,7 +4,7 @@ class Website < ApplicationRecord
   class UserScript
     attr_reader :website
 
-    delegate :scripts, :name, to: :website
+    delegate :name, to: :website
     delegate :domain, to: :website
 
     def initialize(website)
@@ -13,6 +13,12 @@ class Website < ApplicationRecord
 
     def location
       "#{protocol}://#{domain}:#{port}/*"
+    end
+
+    def scripts
+      website.scripts.map do |script|
+        WebsiteScript::UserScript.new(script)
+      end
     end
 
     private
