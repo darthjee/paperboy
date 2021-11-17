@@ -3,7 +3,7 @@
 class WebsitesController < ApplicationController
   include OnePageApplication
 
-  helper_method :user_script
+  helper_method :user_script_wrapper
 
   protect_from_forgery except: %i[create user_script]
 
@@ -19,7 +19,7 @@ class WebsitesController < ApplicationController
     params[:id] || params.require(:website_id)
   end
 
-  def user_script
-    @user_script ||= Website::UserScript.new(website)
+  def user_script_wrapper
+    @user_script_wrapper ||= Website::UserScript.new(website)
   end
 end

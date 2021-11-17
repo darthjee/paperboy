@@ -16,8 +16,8 @@ class WebsiteScript < ApplicationRecord
 
     def ==(other)
       return false unless other.is_a?(self.class)
+
       other.website_script == website_script
     end
   end
 end
-

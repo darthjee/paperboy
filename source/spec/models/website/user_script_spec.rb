@@ -29,7 +29,7 @@ describe Website::UserScript, type: :model do
     end
 
     context 'when protocol is missing' do
-      let(:protocol) {  nil }
+      let(:protocol) { nil }
 
       it 'adds wild cards for protocol' do
         expect(user_script.location).to eq('*://localhost:3000/*')
