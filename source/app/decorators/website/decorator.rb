@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require './app/models/website'
-
 class Website < ApplicationRecord
   class Decorator < ::ModelDecorator
     expose :id

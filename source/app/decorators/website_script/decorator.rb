@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require './app/models/website_script'
-
 class WebsiteScript < ApplicationRecord
   class Decorator < ::ModelDecorator
     expose :id
