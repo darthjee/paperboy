@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require './app/models/script'
-
 class Script < ApplicationRecord
   class IndexDecorator < ::ModelDecorator
     include Rails.application.routes.url_helpers
