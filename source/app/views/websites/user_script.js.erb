@@ -1,12 +1,12 @@
 // ==UserScript==
-// @name         <%= website.name %>
-// @include      <%= website.domain %>
+// @name         <%= user_script.name %>
+// @include      <%= user_script.domain %>
 // ==/UserScript==
 
 (function() {
   'use strict';
 
-  <% website.scripts.each do |website_script| %>
+  <% user_script.scripts.each do |website_script| %>
     <%= website_script.script.content.html_safe %>
   <% end %>
 })();
