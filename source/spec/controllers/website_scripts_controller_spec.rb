@@ -73,23 +73,5 @@ describe WebsiteScriptsController do
         expect(response.body).to eq(expected_json)
       end
     end
-
-    context 'when requesting js', :not_cached do
-      let!(:website_scripts) do
-        create_list(:website_script, 3, website: website, type: :content)
-      end
-
-      render_views
-
-      before do
-        get :index, params: { format: :js, url: url }
-      end
-
-      it { expect(response).to be_successful }
-
-      it 'returns websites scripts as user script' do
-        expect(response.body).to include(website_scripts.sample.script.content)
-      end
-    end
   end
 end
