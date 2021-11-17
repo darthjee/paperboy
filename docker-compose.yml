@@ -85,5 +85,8 @@ services:
     env_file: .env
     container_name: paperboy
     image: darthjee/paperboy
+    command: rails s
     links:
       - paperboy_mysql:mysql
+    ports:
+      - 127.0.0.1:4000:3000

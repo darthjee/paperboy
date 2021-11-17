@@ -3,9 +3,11 @@
 Rails.application.routes.draw do
   get '/' => 'home#show', as: :home
 
-  resource :paperboy, defaults: { format: :js }, only: [] do
-    get '/paperboy.user' => :user_script
-    get '/' => :show
+  resources :paperboy, only: [] do
+    collection do
+      get '/paperboy.user' => :user_script, as: :user_script
+      get '/' => :show
+    end
   end
 
   resources :website_scripts, defaults: { format: :json }, only: [:index]
