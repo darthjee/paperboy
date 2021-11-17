@@ -12,7 +12,7 @@ FactoryBot.define do
   end
 
   trait :content do
-    external_url { nil }
-    content      { 'alert("hello");' }
+    external_url       { nil }
+    sequence(:content) { |n| "alert('hello #{n}');" }
   end
 end

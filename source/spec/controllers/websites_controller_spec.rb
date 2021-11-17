@@ -102,9 +102,9 @@ describe WebsitesController do
       end
 
       context 'when requesting last page' do
-        let(:websites_count) { 21 }
-        let(:expected_object)   { Website.offset(20) }
-        let(:parameters)        { { page: 3 } }
+        let(:websites_count)  { 21 }
+        let(:expected_object) { Website.offset(20) }
+        let(:parameters)      { { page: 3 } }
 
         it { expect(response).to be_successful }
 
@@ -147,8 +147,6 @@ describe WebsitesController do
 
   describe 'POST create' do
     context 'when requesting json format' do
-      let(:size)      { 100 }
-      let(:lethality) { 0.5 }
       let(:website) { Website.last }
 
       let(:parameters) do
@@ -273,6 +271,26 @@ describe WebsitesController do
       it 'returns websites serialized' do
         expect(response.body).to eq(expected_json)
       end
+    end
+  end
+
+  describe 'GET user_script' do
+    render_views
+
+    let(:website) { create(:website) }
+
+    let!(:website_scripts) do
+      create_list(:website_script, 3, website: website, type: :content)
+    end
+
+    before do
+      get :user_script, params: { format: :js, website_id: website.id }
+    end
+
+    it { expect(response).to be_successful }
+
+    it 'returns websites scripts as user script' do
+      expect(response.body).to include(website_scripts.sample.script.content)
     end
   end
 end
