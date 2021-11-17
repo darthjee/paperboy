@@ -3,8 +3,10 @@
 Rails.application.routes.draw do
   get '/' => 'home#show', as: :home
 
-  resources :websites
   resources :scripts
+  resources :websites do
+    get '/script.user' => :user_script
+  end
 
   scope controller: :paperboy, path: '/' do
     get '/paperboy.user' => :user_script, as: :user_script
