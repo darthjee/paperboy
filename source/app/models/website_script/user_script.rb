@@ -5,10 +5,13 @@ class WebsiteScript < ApplicationRecord
     attr_reader :website_script
 
     delegate :script, to: :website_script
-    delegate :content, to: :script
 
     def initialize(website_script)
       @website_script = website_script
+    end
+
+    def content
+      script.content&.html_safe
     end
 
     def ==(other)

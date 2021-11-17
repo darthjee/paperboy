@@ -7,6 +7,6 @@
   'use strict';
 
   <% user_script.scripts.each do |website_script| %>
-    <%= website_script.content.html_safe %>
+    <%= website_script.content %>
   <% end %>
 })();

@@ -13,6 +13,10 @@ describe WebsiteScript::UserScript, type: :model do
       expect(user_script.content).to eq(script.content)
     end
 
+    it 'returns html_safe' do
+      expect(user_script.content).to be_html_safe
+    end
+
     context 'when script has no content' do
       let(:website_script) { create(:website_script, :external_url) }
 
