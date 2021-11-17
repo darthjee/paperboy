@@ -3,7 +3,7 @@
 class WebsitesController < ApplicationController
   include OnePageApplication
 
-  protect_from_forgery except: [:create, :user_script]
+  protect_from_forgery except: %i[create user_script]
 
   resource_for :website,
                paginated: true,

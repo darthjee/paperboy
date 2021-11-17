@@ -3,11 +3,11 @@
 FactoryBot.define do
   factory :website_script, class: 'WebsiteScript' do
     website
-    script          { build(:script, *([type].compact)) }
+    script          { build(:script, *[type].compact) }
     sequence(:path) { |n| "/path/to/#{n}" }
 
     transient do
-      type { }
+      type {}
     end
   end
 end
