@@ -9,5 +9,13 @@ FactoryBot.define do
     transient do
       type {}
     end
+
+    trait :external_url do
+      type { :external_url }
+    end
+
+    trait :content do
+      type { :content }
+    end
   end
 end
