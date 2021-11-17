@@ -75,6 +75,10 @@ describe WebsiteScriptsController do
     end
 
     context 'when requesting js', :not_cached do
+      let!(:website_scripts) do
+        create_list(:website_script, 3, website: website, type: :content)
+      end
+
       render_views
 
       before do
