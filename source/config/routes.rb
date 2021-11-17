@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   scope controller: :paperboy, path: '/' do
     get '/paperboy.user' => :user_script, as: :user_script
-    get '/' => :show, as: :paperboy_script
+    get '/paperboy' => :show, as: :paperboy_script
   end
 
   resources :website_scripts, defaults: { format: :json }, only: [:index]
