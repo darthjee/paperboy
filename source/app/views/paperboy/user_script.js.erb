@@ -9,6 +9,8 @@
 (function() {
   'use strict';
 
+  window.PaperboyUserScript = {};
+
   var url = '<%= paperboy_index_url(format: :js) %>';
   var scrpt = document.createElement('script');
   scrpt.setAttribute('type','text/javascript');
