@@ -11,7 +11,7 @@
 
   window.PaperboyUserScript = {};
 
-  var url = '<%= paperboy_index_url(format: :js) %>';
+  var url = '<%= paperboy_script_url(format: :js) %>';
   var scrpt = document.createElement('script');
   scrpt.setAttribute('type','text/javascript');
   scrpt.setAttribute('src', url);
