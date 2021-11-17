@@ -9,11 +9,11 @@ var Paperboy = {
   listScripts(tag) {
     var localUrl = window.location.origin,
       request = new XMLHttpRequest(),
-      url = '<%= website_scripts_url(format: :json) %>'
+      url = '<%= website_scripts_url(format: :json, url: '--URL--') %>'
 
     request.overrideMimeType("application/json");
     request.responseType = 'json';
-    request.open('GET', url);
+    request.open('GET', url.replace(/--URL--/, location.origin));
 
     request.onload  = function() {
       Paperboy.parseResponse(request);
