@@ -1,11 +1,9 @@
-(function(PaperboyUserScript) {
-  var PathParser = {
-    match(path) {
-      return true;
-    }
-  };
-
-  PaperboyUserScript.match = function(path) {
-    return PathParser.match(path);
+var PathParser = {
+  match(path) {
+    return true;
   }
-})(window.PaperboyUserScript)
+};
+
+PaperboyUserScript.match = function(path) {
+  return PathParser.match(path);
+}
