@@ -26,7 +26,7 @@
     request.send(null);
   };
 
-  PaperboyUserScript.parseResponse(request) {
+  PaperboyUserScript.parseResponse = function(request) {
     var index,
       scripts = request.response;
 
