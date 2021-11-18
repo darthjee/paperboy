@@ -6,6 +6,11 @@
     document.querySelector('head').appendChild(scrpt);
   };
 
+  PaperboyUserScript.processScript = function(script) {
+    console.info(script);
+    this.loadScript(script.script.url);
+  }
+
   PaperboyUserScript.listScripts = function(tag) {
     var localUrl = window.location.origin,
       request = new XMLHttpRequest(),
@@ -26,7 +31,7 @@
       scripts = request.response;
 
     for (var index = 0; index < scripts.length; index ++) {
-      this.loadScript(scripts[index].script.url);
+      this.processScript(scripts[index]);
     }
   };
 })(window.PaperboyUserScript)
