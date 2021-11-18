@@ -1,5 +1,5 @@
-(function() {
-  <%= render partial: 'paperboy' %>
+<%= render partial: 'paperboy' %>
 
-  Paperboy.listScripts();
-})();
+(function(PaperboyUserScript) {
+  PaperboyUserScript.listScripts();
+})(window.PaperboyUserScript);
