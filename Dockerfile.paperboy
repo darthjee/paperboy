@@ -1,4 +1,4 @@
-FROM darthjee/production_paperboy-base:0.0.2 as base
+FROM darthjee/production_paperboy-base:0.1.0 as base
 
 ####################################
 
