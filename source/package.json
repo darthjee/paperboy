@@ -1,5 +1,9 @@
 {
   "name": "paperboy",
   "private": true,
-  "dependencies": {}
+  "devDependencies": {
+    "bower": "^1.8.13",
+    "jasmine-browser-runner": "^1.0.0",
+    "jasmine-core": "^4.0.0"
+  }
 }
