@@ -1,5 +1,5 @@
-FROM darthjee/taa:0.9.0 as base
-FROM darthjee/scripts:0.1.8 as scripts
+FROM darthjee/production_taa:1.1.0 as base
+FROM darthjee/scripts:0.3.0 as scripts
 
 ######################################
 
@@ -11,7 +11,7 @@ ADD source/bower.json /home/app/app/
 ENV HOME_DIR /home/app
 
 COPY --chown=app:app --from=scripts /home/scripts/builder/bundle_builder.sh /usr/local/sbin/bundle_builder.sh
-RUN /bin/bash bundle_builder.sh
+RUN /bin/bash bundle_builder.sh --without development test
 
 COPY --chown=app:app --from=scripts /home/scripts/builder/bower_builder.sh /usr/local/sbin/bower_builder.sh
 RUN /bin/bash bower_builder.sh

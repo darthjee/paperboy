@@ -1,4 +1,4 @@
-FROM darthjee/production_paperboy-base:0.0.2 as base
+FROM darthjee/production_paperboy-base:0.0.3 as base
 
 ####################################
 
@@ -8,8 +8,8 @@ COPY --chown=app:app ./source/ /home/app/app/
 
 RUN bundle install --clean --without development test;
 
-RUN rm /home/app/app/config/master.key -f
 RUN rm /home/app/app/config/credentials.yml.enc -f
+RUN rm /home/app/app/config/master.key -f
 RUN rm /home/app/app/public/assets/* -f
 RUN rm /home/app/app/spec -rf
 RUN EDITOR=none rails credentials:edit
