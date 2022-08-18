@@ -282,6 +282,8 @@ GEM
     turbolinks-source (5.2.0)
     tzinfo (1.2.10)
       thread_safe (~> 0.1)
+    tzinfo-data (1.2022.3)
+      tzinfo (>= 1.0.0)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
     unicode-display_width (1.6.1)
@@ -355,6 +357,7 @@ DEPENDENCIES
   tarquinn (~> 0.2.0)
   timecop (= 0.9.1)
   turbolinks (= 5.2.1)
+  tzinfo-data
   uglifier (= 4.2.0)
   web-console (= 3.7.0)
   webmock (= 3.8.2)

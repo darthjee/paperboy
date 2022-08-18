@@ -44,6 +44,7 @@ gem 'rake',         '13.0.6'
 gem 'sinclair',     '~> 1.6.7'
 gem 'tarquinn',     '~> 0.2.0'
 gem 'turbolinks',   '5.2.1'
+gem 'tzinfo-data'
 
 gem 'darthjee-core_ext', '>= 2.0.0'
 
