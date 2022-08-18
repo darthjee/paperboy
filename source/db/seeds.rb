@@ -15,8 +15,15 @@ module WithSeeder
       @clause = clause
     end
 
-    def or_create_with(attributes = {})
-      klass.find_by(clause) || klass.create(clause.merge(attributes))
+    def or_create_with(attributes = {}, &block)
+      klass.find_by(clause) || create(attributes, &block)
+    end
+
+    def create(attributes, &block)
+      klass.new(clause.merge(attributes)).tap do |element|
+        element.tap(&block) if block
+        element.save
+      end
     end
   end
 
@@ -39,23 +46,32 @@ User
     password: '123456'
   )
 
-Website.find_with(name: 'Localhost')
-       .or_create_with(
-         domain: 'localhost',
-         port: 3000
-       )
+hello_script = Script
+  .find_with(name: 'hello')
+  .or_create_with(
+    content: 'alert("hello");'
+  )
 
-Website.find_with(name: 'google')
-       .or_create_with(
-         domain: 'google.com'
-       )
+question_script = Script
+  .find_with(name: 'question')
+  .or_create_with(
+    content: 'alert("Who am I?");'
+  )
 
-Script.find_with(name: 'hello')
-      .or_create_with(
-        content: 'alert("hello");'
-      )
+Website
+  .find_with(name: 'Localhost')
+  .or_create_with(
+    domain: 'localhost',
+    port: 3000
+  ) do |site|
+    site.scripts << WebsiteScript.new( hello_script
+    site.scripts << question_script
+  end
 
-Script.find_with(name: 'question')
-      .or_create_with(
-        content: 'alert("Who am I?");'
-      )
+  Website
+    .find_with(name: 'google')
+    .or_create_with(
+      domain: 'google.com'
+    ) do |site|
+      site.scripts << question_script
+    end
