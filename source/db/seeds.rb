@@ -40,22 +40,22 @@ User
   )
 
 Website.find_with(name: 'Localhost')
-  .or_create_with(
-    domain: 'localhost',
-    port: 3000
-  )
+       .or_create_with(
+         domain: 'localhost',
+         port: 3000
+       )
 
 Website.find_with(name: 'google')
-  .or_create_with(
-    domain: 'google.com'
-  )
+       .or_create_with(
+         domain: 'google.com'
+       )
 
 Script.find_with(name: 'hello')
-  .or_create_with(
-    content: 'alert("hello");'
-  )
+      .or_create_with(
+        content: 'alert("hello");'
+      )
 
 Script.find_with(name: 'question')
-  .or_create_with(
-    content: 'alert("Who am I?");'
-  )
+      .or_create_with(
+        content: 'alert("Who am I?");'
+      )
