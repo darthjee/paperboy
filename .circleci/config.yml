@@ -11,15 +11,7 @@ workflows:
           filters:
             tags:
               only: /.*/
-      - build-and-release-production:
-          requires: [test, checks]
-          filters:
-            tags:
-              only: /.*/
-            branches:
-              only:
-                - master
-      - build-and-release-container:
+      - build-and-release:
           requires: [test, checks]
           filters:
             tags:
@@ -30,7 +22,7 @@ workflows:
 jobs:
   test:
     docker:
-      - image: darthjee/circleci_paperboy-base:0.0.2
+      - image: darthjee/circleci_paperboy-base:0.0.3
         environment:
           PAPERBOY_MYSQL_HOST: mysql
           PAPERBOY_MYSQL_PORT: 3306
@@ -73,7 +65,7 @@ jobs:
 
   checks:
     docker:
-      - image: darthjee/circleci_paperboy-base:0.0.2
+      - image: darthjee/circleci_paperboy-base:0.0.3
         environment:
           PAPERBOY_MYSQL_HOST: mysql
           PAPERBOY_MYSQL_PORT: 3306
@@ -98,7 +90,7 @@ jobs:
       - run:
           name: Rubocop
           command: rubocop
-  build-and-release-production:
+  build-and-release:
     machine: true
     steps:
       - checkout
@@ -126,16 +118,3 @@ jobs:
       - run:
           name: Populate fields
           command: scripts/release.sh populate
-  build-and-release-container:
-    machine: true
-    steps:
-      - checkout
-      - run:
-          name: Docker login
-          command: docker login --username=$DOCKER_USER --password=$DOCKER_PASS
-      - run:
-          name: Make Build
-          command: scripts/release.sh build-local
-      - run:
-          name: Release
-          command: scripts/release.sh release-local
