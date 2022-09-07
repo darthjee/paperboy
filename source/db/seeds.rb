@@ -43,7 +43,8 @@ Zyra.find_or_create(
   Zyra.find_or_create(
     :website_script,
     website: site,
-    script: hello_script
+    script: hello_script,
+    path: 'websites'
   )
   Zyra.find_or_create(
     :website_script,
