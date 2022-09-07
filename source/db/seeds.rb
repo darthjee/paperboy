@@ -6,72 +6,60 @@
 # command (or created alongside the database with db:setup).
 #
 
-module WithSeeder
-  class Seeder
-    attr_reader :klass, :clause
+Zyra
+  .register(User, find_by: :email)
+  .on(:build) { |user| user.password = SecureRandom.hex(10) }
 
-    def initialize(klass, clause = {})
-      @klass = klass
-      @clause = clause
-    end
+Zyra.register(Script, find_by: :name)
+Zyra.register(Website, find_by: :name)
+Zyra.register(WebsiteScript, find_by: %i[website script])
 
-    def or_create_with(attributes = {}, &block)
-      klass.find_by(clause) || create(attributes, &block)
-    end
+Zyra.find_or_create(
+  :user,
+  email: 'email@srv.com',
+  login: 'user',
+  name: 'user',
+  password: '123456'
+)
 
-    def create(attributes, &block)
-      klass.new(clause.merge(attributes)).tap do |element|
-        element.tap(&block) if block
-        element.save
-      end
-    end
-  end
+hello_script = Zyra.find_or_create(
+  :script,
+  name: 'hello',
+  content: 'alert("hello");'
+)
 
-  def self.include_in(*classes)
-    classes.each { |klass| klass.extend(self) }
-  end
+question_script = Zyra.find_or_create(
+  :script,
+  name: 'question',
+  content: 'alert("Who am I?");'
+)
 
-  def find_with(clause = {})
-    Seeder.new(self, clause)
-  end
+Zyra.find_or_create(
+  :website,
+  name: 'Localhost',
+  domain: 'localhost',
+  port: 3000
+) do |site|
+  Zyra.find_or_create(
+    :website_script,
+    website: site,
+    script: hello_script
+  )
+  Zyra.find_or_create(
+    :website_script,
+    website: site,
+    script: ques_script
+  )
 end
 
-WithSeeder.include_in(User, Website, Script)
-
-User
-  .find_with(email: 'email@srv.com')
-  .or_create_with(
-    login: 'user',
-    name: 'user',
-    password: '123456'
+Zyra.find_or_create(
+  :website,
+  name: 'google',
+  domain: 'google.com'
+) do |site|
+  Zyra.find_or_create(
+    :website_script,
+    website: site,
+    script: ques_script
   )
-
-hello_script = Script
-  .find_with(name: 'hello')
-  .or_create_with(
-    content: 'alert("hello");'
-  )
-
-question_script = Script
-  .find_with(name: 'question')
-  .or_create_with(
-    content: 'alert("Who am I?");'
-  )
-
-Website
-  .find_with(name: 'Localhost')
-  .or_create_with(
-    domain: 'localhost',
-    port: 3000
-  ) do |site|
-    site.scripts << WebsiteScript.new( hello_script
-    site.scripts << question_script
-  end
-
-  Website
-    .find_with(name: 'google')
-    .or_create_with(
-      domain: 'google.com'
-    ) do |site|
-      site.scripts << question_script
-    end
+end
