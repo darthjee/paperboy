@@ -7,3 +7,9 @@ var PathParser = {
 PaperboyUserScript.match = function(path) {
   return PathParser.match(path);
 }
+
+PaperboyUserScript.checkAndRun = function(path, func) {
+  if (PathParser.match(path)) {
+    func.call()
+  }
+};
