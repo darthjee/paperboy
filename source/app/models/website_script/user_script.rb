@@ -4,7 +4,7 @@ class WebsiteScript < ApplicationRecord
   class UserScript
     attr_reader :website_script
 
-    delegate :path, :script, to: :website_script
+    delegate :script, to: :website_script
 
     def initialize(website_script)
       @website_script = website_script
@@ -12,6 +12,10 @@ class WebsiteScript < ApplicationRecord
 
     def content
       script.content&.html_safe
+    end
+
+    def path
+      website_script.path&.html_safe
     end
 
     def ==(other)
