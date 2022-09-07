@@ -12,7 +12,7 @@ Zyra
 
 Zyra.register(Script, find_by: :name)
 Zyra.register(Website, find_by: :name)
-Zyra.register(WebsiteScript, find_by: %i[website script])
+Zyra.register(WebsiteScript, :website_script, find_by: %i[website script])
 
 Zyra.find_or_create(
   :user,
