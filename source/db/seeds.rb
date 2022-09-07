@@ -48,7 +48,7 @@ Zyra.find_or_create(
   Zyra.find_or_create(
     :website_script,
     website: site,
-    script: ques_script
+    script: question_script
   )
 end
 
@@ -60,6 +60,6 @@ Zyra.find_or_create(
   Zyra.find_or_create(
     :website_script,
     website: site,
-    script: ques_script
+    script: question_script
   )
 end
