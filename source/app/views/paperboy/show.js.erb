@@ -1,5 +1,8 @@
-(function() {
+(function(window) {
+  window.PaperboyUserScript = {};
+
+  <%= render partial: 'path_parser' %>
   <%= render partial: 'paperboy' %>
 
-  Paperboy.listScripts();
-})();
+  PaperboyUserScript.listScripts();
+})(window);
