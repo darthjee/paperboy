@@ -13,9 +13,10 @@
   'use strict';
 
   <%= render partial: 'paperboy/path_parser' %>
+  <%= render partial: 'paperboy/script_loader' %>
 
   <% user_script_wrapper.scripts.each do |website_script| %>
-    PaperboyUserScript.checkAndRun(<%= website_script.path.to_json %>, function() {
+    ScriptLoader.load(<%= website_script.path.to_json %>, function() {
       <%= website_script.content %>
     });
   <% end %>

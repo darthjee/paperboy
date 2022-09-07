@@ -7,13 +7,3 @@ var PathParser = {
     return window.location.href == path;
   }
 };
-
-PaperboyUserScript.match = function(path) {
-  return PathParser.match(path);
-}
-
-PaperboyUserScript.checkAndRun = function(path, func) {
-  if (PathParser.match(path)) {
-    func.call()
-  }
-};
