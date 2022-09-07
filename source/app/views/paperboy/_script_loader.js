@@ -9,7 +9,7 @@ class ScriptLoader {
   }
 
   call() {
-    if (! _match()) { return; }
+    if (! this._match()) { return; }
     if (this.loaded) { return; }
 
     this.func.call();
