@@ -1,6 +1,6 @@
 var PathParser = {
   match(path) {
-    if (!path) {
+    if (!path || path == '') {
       return true
     }
 

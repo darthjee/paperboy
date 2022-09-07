@@ -16,7 +16,7 @@
   <%= render partial: 'paperboy/script_loader' %>
 
   <% user_script_wrapper.scripts.each do |website_script| %>
-    ScriptLoader.load(<%= website_script.path.to_json %>, function() {
+    ScriptLoader.load('<%= website_script.path %>', function() {
       <%= website_script.content %>
     });
   <% end %>
