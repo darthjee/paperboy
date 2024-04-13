@@ -1,6 +1,6 @@
 PROJECT?=paperboy
 IMAGE?=$(PROJECT)
-BASE_VERSION?=0.0.3
+BASE_VERSION?=1.1.1
 BASE_IMAGE?=$(DOCKER_ID_USER)/$(PROJECT)-base
 PUSH_IMAGE=$(DOCKER_ID_USER)/$(PROJECT)
 DOCKER_FILE_BASE=Dockerfile.$(PROJECT)-base
@@ -31,10 +31,3 @@ push:
 	make build
 	docker push $(PUSH_IMAGE)
 	docker push $(PUSH_IMAGE):$(BASE_VERSION)
-
-build-heroku:
-	docker build -f Dockerfile.web . -t registry.heroku.com/$(PROJECT)/web
-
-release:
-	heroku container:push --recursive web
-	heroku container:release web
