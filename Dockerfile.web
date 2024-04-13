@@ -1,3 +1,0 @@
-FROM darthjee/production_paperboy:0.0.3
-
-CMD ["bin/rails", "s"]

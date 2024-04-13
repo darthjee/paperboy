@@ -1,13 +1,13 @@
-FROM darthjee/scripts:0.3.0 as scripts
-FROM darthjee/circleci_taa:1.1.0 as base
-
-USER root
-RUN apt-get update && apt-get install -y default-libmysqld-dev
+FROM darthjee/scripts:0.3.1 as scripts
+FROM darthjee/circleci_taa:1.2.1 as base
 
 ######################################
 
-FROM base as builder
+USER root
+RUN apt-get update && apt-get install -y default-libmysqld-dev
 USER circleci
+
+FROM base as builder
 
 ADD source/Gemfile* /home/circleci/project/
 ADD source/bower.json /home/circleci/project/
@@ -15,7 +15,6 @@ ADD source/bower.json /home/circleci/project/
 ENV HOME_DIR /home/circleci
 
 COPY --chown=circleci:circleci --from=scripts /home/scripts/builder/bundle_builder.sh /usr/local/sbin/bundle_builder.sh
-ENV BUNDLE_FOLDER /home/circleci/.rubygems
 RUN /bin/bash bundle_builder.sh
 
 COPY --chown=circleci:circleci --from=scripts /home/scripts/builder/bower_builder.sh /usr/local/sbin/bower_builder.sh
@@ -29,8 +28,7 @@ USER root
 
 RUN apt-get install telnet
 
-COPY --chown=circleci:circleci --from=builder /home/circleci/bundle/ /home/circleci/.rubygems/
+COPY --chown=circleci:circleci --from=builder /home/circleci/bundle/ /usr/local/bundle/
 COPY --chown=circleci:circleci --from=builder /home/circleci/bower/ /home/circleci/.cache/bower/
 
 USER circleci
-USER root
