@@ -1,21 +1,21 @@
 version: '3'
 services:
-  stalchild_mysql:
+  paperboy_mysql:
     image: mysql:5.7
-    container_name: stalchild_mysql
+    container_name: paperboy_mysql
     env_file: .env
     environment:
-      MYSQL_ROOT_PASSWORD: stalchild
+      MYSQL_ROOT_PASSWORD: paperboy
     ports:
-      - 127.0.0.1:$STALCHILD_MYSQL_PORT:3306
+      - 127.0.0.1:$PAPERBOY_MYSQL_PORT:3306
   #################### Base  ####################
 
   base: &base
-    image: darthjee/stalchild
+    image: darthjee/paperboy
     volumes:
       - ./source:/home/app/app
     links:
-      - stalchild_mysql:mysql
+      - paperboy_mysql:mysql
     env_file: .env
 
 
@@ -23,38 +23,38 @@ services:
     <<: *base
     build:
       context: .
-      dockerfile: Dockerfile.stalchild
+      dockerfile: Dockerfile.paperboy
     command: echo done
 
   #################### CONTAINERS ####################
 
-  stalchild_app:
+  paperboy_app:
     <<: *base
-    container_name: stalchild_app
+    container_name: paperboy_app
     command: /bin/bash bin/server.sh
     depends_on: [base_build]
     ports:
       - 127.0.0.1:3000:3000
     environment:
       - RAILS_ENV=development
-      - STALCHILD_MYSQL_PORT=3306
+      - PAPERBOY_MYSQL_PORT=3306
 
-  stalchild_tests:
+  paperboy_tests:
     <<: *base
-    container_name: stalchild_tests
+    container_name: paperboy_tests
     command: /bin/bash bin/tests.sh
     depends_on: [base_build]
     environment:
       - RAILS_ENV=test
 
-  stalchild_root:
+  paperboy_root:
     <<: *base
     user: root
-    container_name: stalchild_root
+    container_name: paperboy_root
     command: /bin/bash
     depends_on: [base_build]
 
-  stalchild_production:
+  paperboy_production:
     env_file: .env.production
-    container_name: stalchild_production
-    image: darthjee/production_stalchild
+    container_name: paperboy_production
+    image: darthjee/production_paperboy

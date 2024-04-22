@@ -7,7 +7,7 @@ shared_examples 'a setting' do |field|
   let(:expected_default_class) { expected_class }
 
   let(:env_hash) do
-    { "stalchild_#{field}" => nil }
+    { "paperboy_#{field}" => nil }
   end
 
   it do
@@ -20,7 +20,7 @@ shared_examples 'a setting' do |field|
 
   context 'when only env is set' do
     let(:env_hash) do
-      { "stalchild_#{field}" => value }
+      { "paperboy_#{field}" => value }
     end
 
     it 'returns the value from env' do
@@ -48,7 +48,7 @@ shared_examples 'a setting' do |field|
 
   context 'when env and db are set' do
     let(:env_hash) do
-      { "stalchild_#{field}" => value }
+      { "paperboy_#{field}" => value }
     end
 
     before do

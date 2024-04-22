@@ -17,7 +17,7 @@ class User < ApplicationRecord
   def self.login(login:, password:)
     User.find_by!(login: login).verify_password!(password)
   rescue ActiveRecord::RecordNotFound
-    raise Stalchild::Exception::LoginFailed
+    raise Paperboy::Exception::LoginFailed
   end
 
   def password=(pass)
@@ -28,7 +28,7 @@ class User < ApplicationRecord
   def verify_password!(pass)
     return self if encrypted_password == encrypt_password(pass)
 
-    raise Stalchild::Exception::LoginFailed
+    raise Paperboy::Exception::LoginFailed
   end
 
   private

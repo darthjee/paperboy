@@ -26,7 +26,7 @@ describe User do
 
       it do
         expect { described_class.login(**login_hash) }
-          .to raise_error(Stalchild::Exception::LoginFailed)
+          .to raise_error(Paperboy::Exception::LoginFailed)
       end
     end
 
@@ -35,7 +35,7 @@ describe User do
 
       it do
         expect { described_class.login(**login_hash) }
-          .to raise_error(Stalchild::Exception::LoginFailed)
+          .to raise_error(Paperboy::Exception::LoginFailed)
       end
     end
   end
@@ -81,7 +81,7 @@ describe User do
       it do
         expect { user.verify_password!(password) }
           .to not_change(user, :salt)
-          .and raise_error(Stalchild::Exception::LoginFailed)
+          .and raise_error(Paperboy::Exception::LoginFailed)
       end
     end
   end

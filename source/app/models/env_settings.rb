@@ -3,7 +3,7 @@
 class EnvSettings
   extend Sinclair::EnvSettable
 
-  settings_prefix 'STALCHILD'
+  settings_prefix 'PAPERBOY'
 
   with_settings(
     :password_salt,

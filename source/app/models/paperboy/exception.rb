@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-module Stalchild
+module Paperboy
   class Exception < StandardError
-    class LoginFailed  < Stalchild::Exception; end
-    class Unauthorized < Stalchild::Exception; end
-    class NotLogged    < Stalchild::Exception; end
+    class LoginFailed  < Paperboy::Exception; end
+    class Unauthorized < Paperboy::Exception; end
+    class NotLogged    < Paperboy::Exception; end
   end
 end

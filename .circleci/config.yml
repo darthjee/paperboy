@@ -22,20 +22,20 @@ workflows:
 jobs:
   test:
     docker:
-      - image: darthjee/circleci_stalchild-base:0.0.1
+      - image: darthjee/circleci_paperboy-base:0.0.3
         environment:
-          STALCHILD_MYSQL_HOST: mysql
-          STALCHILD_MYSQL_PORT: 3306
-          STALCHILD_MYSQL_USER: stalchild
-          STALCHILD_MYSQL_NAME: stalchild
-          STALCHILD_MYSQL_PASSWORD: stalchild
-          STALCHILD_PASSWORD_SALT: abcd
+          PAPERBOY_MYSQL_HOST: mysql
+          PAPERBOY_MYSQL_PORT: 3306
+          PAPERBOY_MYSQL_USER: paperboy
+          PAPERBOY_MYSQL_NAME: paperboy
+          PAPERBOY_MYSQL_PASSWORD: paperboy
+          PAPERBOY_PASSWORD_SALT: abcd
       - image: circleci/mysql:5.7
         name: mysql
         environment:
-          MYSQL_DATABASE: stalchild_test
-          MYSQL_USER: stalchild
-          MYSQL_PASSWORD: stalchild
+          MYSQL_DATABASE: paperboy_test
+          MYSQL_USER: paperboy
+          MYSQL_PASSWORD: paperboy
     steps:
       - checkout
       - run:
@@ -49,36 +49,36 @@ jobs:
           command: bundle install
       - run:
           name: Bower Install
-          command: rake bower:install
+          command: bundle exec rake bower:install
       - run:
           name: Wait for database
           command: scripts/wait_for_db.sh
       - run:
           name: Migrate
-          command: RAILS_ENV=test rake db:schema:load
+          command: RAILS_ENV=test bundle exec rake db:schema:load
       - run:
           name: RSpec
-          command: rspec
+          command: bundle exec rspec
       - run:
           name: Coverage Test Report
-          command: cc-test-reporter after-build -t simplecov --exit-code $?
+          command: cc-test-reporter after-build --exit-code $?
 
   checks:
     docker:
-      - image: darthjee/circleci_stalchild-base:0.0.1
+      - image: darthjee/circleci_paperboy-base:0.0.3
         environment:
-          STALCHILD_MYSQL_HOST: mysql
-          STALCHILD_MYSQL_PORT: 3306
-          STALCHILD_MYSQL_USER: stalchild
-          STALCHILD_MYSQL_NAME: stalchild
-          STALCHILD_MYSQL_PASSWORD: stalchild
-          STALCHILD_PASSWORD_SALT: abcd
+          PAPERBOY_MYSQL_HOST: mysql
+          PAPERBOY_MYSQL_PORT: 3306
+          PAPERBOY_MYSQL_USER: paperboy
+          PAPERBOY_MYSQL_NAME: paperboy
+          PAPERBOY_MYSQL_PASSWORD: paperboy
+          PAPERBOY_PASSWORD_SALT: abcd
       - image: circleci/mysql:5.7
         name: mysql
         environment:
-          MYSQL_DATABASE: stalchild_test
-          MYSQL_USER: stalchild
-          MYSQL_PASSWORD: stalchild
+          MYSQL_DATABASE: paperboy_test
+          MYSQL_USER: paperboy
+          MYSQL_PASSWORD: paperboy
     steps:
       - checkout
       - run:
