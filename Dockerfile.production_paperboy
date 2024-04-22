@@ -10,7 +10,7 @@ RUN bundle install --without development test;
 
 RUN rm /home/app/app/config/master.key -f
 RUN rm /home/app/app/config/credentials.yml.enc -f
-RUN rm /home/app/app/public/assets/* -f
+RUN rm /home/app/app/public/assets/* -rf
 RUN rm /home/app/app/spec -rf
 RUN EDITOR=none rails credentials:edit
 RUN rake bower:install
