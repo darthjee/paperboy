@@ -1,6 +1,6 @@
 #!/bin/bash
 
-RENDER_SERVICE_NAME="moon"
+RENDER_SERVICE_NAME="paperboy"
 
 function request() {
   METHOD=$1
