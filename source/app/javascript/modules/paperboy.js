@@ -1,5 +1,5 @@
 (function(angular) {
-  var module = angular.module('stalchild', [
+  var module = angular.module('paperboy', [
     'global',
     'cyberhawk',
     'kanto',

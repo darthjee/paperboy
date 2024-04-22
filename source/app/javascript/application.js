@@ -21,7 +21,7 @@
 //= require cyberhawk/cyberhawk
 //= require bootstrap
 //= require_tree ./utils
-//= require modules/stalchild
+//= require modules/paperboy
 //= require_tree ./modules
 //= require rails-ujs
 //= require_tree .

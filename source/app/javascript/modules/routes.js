@@ -1,5 +1,5 @@
 (function(angular) {
-  var module = angular.module("stalchild");
+  var module = angular.module("paperboy");
 
   module.config(["kantoProvider", function(provider) {
     provider.defaultConfig = {
