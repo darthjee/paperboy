@@ -1,0 +1,60 @@
+version: '3'
+services:
+  stalchild_mysql:
+    image: mysql:5.7
+    container_name: stalchild_mysql
+    env_file: .env
+    environment:
+      MYSQL_ROOT_PASSWORD: stalchild
+    ports:
+      - 127.0.0.1:$STALCHILD_MYSQL_PORT:3306
+  #################### Base  ####################
+
+  base: &base
+    image: darthjee/stalchild
+    volumes:
+      - ./source:/home/app/app
+    links:
+      - stalchild_mysql:mysql
+    env_file: .env
+
+
+  base_build:
+    <<: *base
+    build:
+      context: .
+      dockerfile: Dockerfile.stalchild
+    command: echo done
+
+  #################### CONTAINERS ####################
+
+  stalchild_app:
+    <<: *base
+    container_name: stalchild_app
+    command: /bin/bash bin/server.sh
+    depends_on: [base_build]
+    ports:
+      - 127.0.0.1:3000:3000
+    environment:
+      - RAILS_ENV=development
+      - STALCHILD_MYSQL_PORT=3306
+
+  stalchild_tests:
+    <<: *base
+    container_name: stalchild_tests
+    command: /bin/bash bin/tests.sh
+    depends_on: [base_build]
+    environment:
+      - RAILS_ENV=test
+
+  stalchild_root:
+    <<: *base
+    user: root
+    container_name: stalchild_root
+    command: /bin/bash
+    depends_on: [base_build]
+
+  stalchild_production:
+    env_file: .env.production
+    container_name: stalchild_production
+    image: darthjee/production_stalchild
