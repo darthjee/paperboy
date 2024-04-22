@@ -1,0 +1,32 @@
+var Paperboy = {
+  loadScript(url) {
+    var scrpt = document.createElement('script');
+    scrpt.setAttribute('type','text/javascript');
+    scrpt.setAttribute('src', url);
+    document.querySelector('head').appendChild(scrpt);
+  },
+
+  listScripts(tag) {
+    var localUrl = window.location.origin,
+      request = new XMLHttpRequest(),
+      url = '<%= website_scripts_url(format: :json, url: '--URL--') %>'
+
+    request.overrideMimeType("application/json");
+    request.responseType = 'json';
+    request.open('GET', url.replace(/--URL--/, location.origin));
+
+    request.onload  = function() {
+      Paperboy.parseResponse(request);
+    };
+    request.send(null);
+  },
+
+  parseResponse(request) {
+    var index,
+      scripts = request.response;
+
+    for (var index = 0; index < scripts.length; index ++) {
+      this.loadScript(scripts[index].script.url);
+    }
+  }
+}

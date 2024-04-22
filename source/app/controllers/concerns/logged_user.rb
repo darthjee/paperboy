@@ -10,14 +10,16 @@ module LoggedUser
 
   private
 
-  delegate :logged_user, :logged_session, to: :logged_user_processor
-
   def save_session
     logged_user_processor.login(user)
   end
 
   def destroy_session
     logged_user_processor.logoff
+  end
+
+  def logged_user
+    @logged_user ||= logged_user_processor.logged_user
   end
 
   def logged_user_processor

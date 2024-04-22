@@ -6,9 +6,11 @@ module ApplicationHelper
     link_to(text, angular_path_to(path), *args)
   end
 
-  def angular_safe_link_to(path_method, path_args = {}, *args, &block)
+  def angular_safe_link_to(path_method, path_args = {}, *args)
     path = angular_path_to(path_method, path_args)
-    link_to(path, *args, &block)
+    link_to(path, *args) do
+      yield
+    end
   end
 
   def angular_path_to(path_method, path_args = {})

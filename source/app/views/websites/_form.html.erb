@@ -1,0 +1,34 @@
+<div class="card shadow-sm">
+  <div class="card-header">
+    <h4 class="my-0 font-weight-normal">
+      Website
+    </h4>
+  </div>
+  <div class="card-body">
+    <%= form.input(:name, placeholder: "Website name") %>
+    <%= form.input(:domain, placeholder: "www.domain.com") %>
+    <%= form.input(:port, placeholder: "80") %>
+    <%= form.select(:protocol, options: Website::PROTOCOLS ) %>
+
+    <div class="form-group row">
+      <div class="offset-2 col-10">
+        <%= form.only(:form) do
+          form.button(
+            ng_click: 'gnc.save()',
+            ng_disabled: 'gnc.ongoing',
+            classes: 'btn-primary',
+            text: 'Save'
+          )
+        end %>
+        <%= form.only(:display) do
+          form.button(
+            classes: 'btn-primary',
+            href: angular_path_to(:edit_website, { id: "{{gnc.data.id}}" }),
+            text: 'Edit'
+          )
+        end %>
+      </div>
+    </div>
+  </div>
+</div>
+

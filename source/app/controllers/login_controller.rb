@@ -10,11 +10,11 @@ class LoginController < ApplicationController
   before_action :check_logged!, only: :check
 
   def create
-    render json: Session::Decorator.new(logged_session)
+    render json: User::Decorator.new(user)
   end
 
   def check
-    render json: Session::Decorator.new(logged_session)
+    render json: User::Decorator.new(logged_user)
   end
 
   def logoff
@@ -24,7 +24,7 @@ class LoginController < ApplicationController
   private
 
   def user
-    @user ||= User.login(**login_params)
+    @user ||= User.login(login_params)
   end
 
   def login_params

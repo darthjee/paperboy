@@ -1,23 +1,14 @@
 # frozen_string_literal: true
 
-class Sinclair
-  module Settable
-    class Caster
-      cast_with(:seconds) { |value| value.to_i.seconds }
-    end
-  end
-end
-
 class Settings
-  extend Sinclair::ChainSettable
+  extend Sinclair::EnvSettable
 
-  source :env, EnvSettings
-  source :db,  ActiveSettings
+  settings_prefix 'PAPERBOY'
 
-  setting_with_options(:password_salt)
-  setting_with_options(:hex_code_size, default: 16, type: :integer)
-  setting_with_options(:session_period, default: 2.days, type: :seconds)
-  setting_with_options(:cache_age, default: 10.seconds, type: :seconds)
-  setting_with_options(:title, default: 'Paperboy')
-  setting_with_options(:favicon, default: '/favicon.ico')
+  with_settings(
+    :password_salt,
+    hex_code_size: 16,
+    session_period: 2.days,
+    cache_age: 10.seconds
+  )
 end
