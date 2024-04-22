@@ -8,7 +8,7 @@ function run() {
 }
 
 function run_docker() {
-  docker-compose run stalchild_production /bin/bash
+  docker-compose run paperboy_production /bin/bash
 }
 
 function clean_env() {

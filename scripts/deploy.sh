@@ -52,7 +52,7 @@ function watch_deployment() {
     sleep $WAIT_TIME
 
     if [ "$WAIT_TIME" -gt 10 ]; then
-      WAIT_TIME=$[$WAIT_TIME/2]
+      WAIT_TIME=$[WAIT_TIME/2]
     fi
   done
 

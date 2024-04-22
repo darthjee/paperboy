@@ -1,6 +1,6 @@
 #!/bin/bash
 
-RENDER_SERVICE_NAME="stalchild"
+RENDER_SERVICE_NAME="paperboy"
 
 function request() {
   METHOD=$1
