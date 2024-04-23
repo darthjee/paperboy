@@ -14,7 +14,7 @@ PaperboyUserScript.processScript = function(script) {
 PaperboyUserScript.listScripts = function(tag) {
   var localUrl = window.location.origin,
     request = new XMLHttpRequest(),
-    url = '<%= website_scripts_url(format: :json, url: '--URL--') %>'
+    url = PaperboyUserScript.scripts_url
 
   request.overrideMimeType("application/json");
   request.responseType = 'json';

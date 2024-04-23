@@ -4,5 +4,7 @@
   <%= render partial: 'path_parser' %>
   <%= render partial: 'paperboy' %>
 
+  PaperboyUserScript.scripts_url = '<%= website_scripts_url(format: :json, url: '--URL--') %>'
+
   PaperboyUserScript.listScripts();
 })(window);
