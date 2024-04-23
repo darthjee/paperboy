@@ -6,8 +6,10 @@ PaperboyUserScript.loadScript = function(url) {
 };
 
 PaperboyUserScript.processScript = function(script) {
-  this.loadScript(script.script.url);
-}
+  if (PathParser.match(script.script.url) {
+    this.loadScript(script.script.url);
+  };
+};
 
 PaperboyUserScript.listScripts = function(tag) {
   var localUrl = window.location.origin,
