@@ -24,5 +24,4 @@
 //= require modules/paperboy
 //= require_tree ./modules
 //= require rails-ujs
-//= require turbolinks
 //= require_tree .
