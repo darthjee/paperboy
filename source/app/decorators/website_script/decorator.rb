@@ -5,5 +5,6 @@ class WebsiteScript < ApplicationRecord
     expose :id
     expose :script, decorator: Script::IndexDecorator
     expose :path
+    expose :website, decorator: Website::Decorator
   end
 end
