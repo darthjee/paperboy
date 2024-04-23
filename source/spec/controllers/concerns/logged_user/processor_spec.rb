@@ -35,8 +35,6 @@ describe LoggedUser::Processor do
 
     context 'when login has been called' do
       let(:expected_expiration_range) do
-        (Settings.session_period.from_now - 1.second)..
-        Settings.session_period.from_now
       end
 
       before do
@@ -53,7 +51,10 @@ describe LoggedUser::Processor do
 
       it 'creates a session with expiration date' do
         expect(session.expiration)
-          .to be_in(expected_expiration_range)
+          .to be_between(
+            (Settings.session_period.from_now - 1.second),
+            Settings.session_period.from_now
+          )
       end
     end
   end
