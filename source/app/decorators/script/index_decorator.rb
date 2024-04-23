@@ -18,7 +18,7 @@ class Script < ApplicationRecord
     end
 
     def content_url
-      # TODO fix script_path
+      # TODO: fix script_path
       # script_path(id: id, format: :js)
     end
   end
