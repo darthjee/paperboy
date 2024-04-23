@@ -5,6 +5,12 @@ require: rubocop-rspec
 AllCops:
   TargetRubyVersion: 2.7
 
+Metrics/BlockLength:
+  Exclude:
+    - 'db/**/*.rb'
+    - 'spec/**/*_spec.rb'
+    - 'spec/support/**/*.rb'
+
 Style/Documentation:
   Enabled: false
 
@@ -315,7 +321,7 @@ FactoryBot/ConsistentParenthesesStyle:
   Enabled: true
 
 FactoryBot/FactoryAssociationWithStrategy:
-  Enabled: true
+  Enabled: false
 
 FactoryBot/FactoryNameStyle:
   Enabled: true
