@@ -6,7 +6,7 @@ PaperboyUserScript.loadScript = function(url) {
 };
 
 PaperboyUserScript.processScript = function(script) {
-  if (PathParser.match(script.script.url)) {
+  if (PathParser.match(script.script.path) && WebsiteParser.match(script.website)) {
     this.loadScript(script.script.url);
   };
 };
