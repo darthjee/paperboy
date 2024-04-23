@@ -6,11 +6,8 @@ describe LoggedUser::Processor do
   subject(:processor) { described_class.new(controller) }
 
   let(:user)       { create(:user) }
+  let(:controller) { instance_double(controller_class, cookies: cookies) }
   let(:cookies)    { instance_double(ActionDispatch::Cookies::CookieJar) }
-  let(:headers)    { {} }
-  let(:controller) do
-    instance_double(controller_class, cookies: cookies, headers: headers)
-  end
 
   let(:signed_cookies) { {} }
 
@@ -37,6 +34,11 @@ describe LoggedUser::Processor do
     end
 
     context 'when login has been called' do
+      let(:expected_expiration_range) do
+        (Settings.session_period.from_now - 1.second)..
+        Settings.session_period.from_now
+      end
+
       before do
         processor.login(user)
       end
@@ -50,11 +52,8 @@ describe LoggedUser::Processor do
       end
 
       it 'creates a session with expiration date' do
-        expect(session.expiration).to be <= Settings.session_period.from_now
-      end
-
-      it 'creates a session with expiration date in the future' do
-        expect(session.expiration).to be >= (Settings.session_period.from_now - 2.second)
+        expect(session.expiration)
+          .to be_in(expected_expiration_range)
       end
     end
   end
@@ -64,7 +63,7 @@ describe LoggedUser::Processor do
       it { expect(processor.logged_user).to be_nil }
     end
 
-    context 'when user is logged through cookie' do
+    context 'when user is logged' do
       let(:session) do
         create(:session, expiration: expiration, user: user)
       end
@@ -103,50 +102,6 @@ describe LoggedUser::Processor do
 
       before do
         allow(signed_cookies).to receive(:[]).and_raise(NoMethodError)
-      end
-
-      it do
-        expect { processor.logged_user }.not_to raise_error
-      end
-
-      it { expect(processor.logged_user).to be_nil }
-    end
-
-    context 'when user is logged through token' do
-      let(:session) do
-        create(:session, expiration: expiration, user: user)
-      end
-
-      before do
-        headers['Authorization'] = "Bearer #{session.token}"
-      end
-
-      context 'without expiration' do
-        let(:expiration) { nil }
-
-        it 'returns the user' do
-          expect(processor.logged_user).to eq(user)
-        end
-      end
-
-      context 'with expiration in the future' do
-        let(:expiration) { 2.days.from_now }
-
-        it 'returns the user' do
-          expect(processor.logged_user).to eq(user)
-        end
-      end
-
-      context 'with expiration in the past' do
-        let(:expiration) { 2.days.ago }
-
-        it { expect(processor.logged_user).to be_nil }
-      end
-    end
-
-    context 'when user is logged with an invalid token' do
-      before do
-        headers['Authorization'] = 'Bearer some token'
       end
 
       it do

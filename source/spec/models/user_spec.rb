@@ -17,7 +17,7 @@ describe User do
 
     context 'when login and password matches' do
       it 'returns user' do
-        expect(described_class.login(**login_hash)).to eq(user)
+        expect(described_class.login(login_hash)).to eq(user)
       end
     end
 
@@ -25,7 +25,7 @@ describe User do
       let(:user) { create(:user) }
 
       it do
-        expect { described_class.login(**login_hash) }
+        expect { described_class.login(login_hash) }
           .to raise_error(Paperboy::Exception::LoginFailed)
       end
     end
@@ -34,7 +34,7 @@ describe User do
       let(:login) { 'other_login' }
 
       it do
-        expect { described_class.login(**login_hash) }
+        expect { described_class.login(login_hash) }
           .to raise_error(Paperboy::Exception::LoginFailed)
       end
     end

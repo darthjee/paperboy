@@ -10,7 +10,7 @@ describe LoginController do
   let(:request_password) { password }
 
   let(:expected_json) do
-    Session::Decorator.new(session).to_json
+    User::Decorator.new(user).to_json
   end
 
   let(:parameters) do
@@ -23,8 +23,6 @@ describe LoginController do
   end
 
   describe 'POST create' do
-    let(:session) { user.sessions.last }
-
     context 'when login is correct' do
       it 'creates a session' do
         expect do
@@ -93,7 +91,7 @@ describe LoginController do
         end
 
         it do
-          expect(response).to have_http_status(:not_found)
+          expect(response.status).to eq(404)
         end
       end
     end
@@ -123,7 +121,7 @@ describe LoginController do
         end
 
         it do
-          expect(response).to have_http_status(:not_found)
+          expect(response.status).to eq(404)
         end
       end
     end
@@ -136,11 +134,11 @@ describe LoginController do
       end
 
       context 'when user is not logged' do
-        let(:session) { nil }
+        let(:session) {}
 
         it { expect(response).not_to be_successful }
 
-        it { expect(response).to have_http_status(:not_found) }
+        it { expect(response.status).to eq(404) }
       end
 
       context 'when user is logged' do
@@ -158,7 +156,7 @@ describe LoginController do
 
         it { expect(response).not_to be_successful }
 
-        it { expect(response).to have_http_status(:not_found) }
+        it { expect(response.status).to eq(404) }
       end
     end
   end
