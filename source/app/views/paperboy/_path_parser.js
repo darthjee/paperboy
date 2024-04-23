@@ -10,6 +10,14 @@ var WebsiteParser = {
       return false;
     }
 
+    if (! AsymetricMatcher.match(website.port, window.location.port)) {
+      return false;
+    }
+
+    if (! AsymetricMatcher.match(website.protocol, window.location.protocol)) {
+      return false;
+    }
+
     return true;
   }
 };
