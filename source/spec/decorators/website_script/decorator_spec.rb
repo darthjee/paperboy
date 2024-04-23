@@ -11,6 +11,7 @@ describe WebsiteScript::Decorator do
   describe '#to_json' do
     context 'when object is one entity' do
       let(:object) { create(:website_script, script: script) }
+      let(:website) { object.website }
       let(:script) { create(:script, type) }
       let(:type)   { :external_url }
 
@@ -23,6 +24,13 @@ describe WebsiteScript::Decorator do
             name: script.name,
             url: script.external_url,
             format: 'url'
+          },
+          website: {
+            id: website.id,
+            domain: website.domain,
+            name: website.name,
+            port: website.port,
+            protocol: website.protocol
           }
         }.deep_stringify_keys
       end
@@ -48,6 +56,13 @@ describe WebsiteScript::Decorator do
               name: script.name,
               url: expected_path,
               format: 'path'
+            },
+            website: {
+              id: website.id,
+              domain: website.domain,
+              name: website.name,
+              port: website.port,
+              protocol: website.protocol
             }
           }.deep_stringify_keys
         end
@@ -97,6 +112,13 @@ describe WebsiteScript::Decorator do
               url: script.external_url,
               format: 'url',
               errors: expected_script_errors
+            },
+            website: {
+              id: website.id,
+              domain: website.domain,
+              name: website.name,
+              port: website.port,
+              protocol: website.protocol
             }
           }.deep_stringify_keys
         end
@@ -122,6 +144,13 @@ describe WebsiteScript::Decorator do
               name: obj.script.name,
               url: obj.script.external_url,
               format: 'url'
+            },
+            website: {
+              id: obj.website.id,
+              domain: obj.website.domain,
+              name: obj.website.name,
+              port: obj.website.port,
+              protocol: obj.website.protocol
             }
           }
         end.as_json
