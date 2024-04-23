@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe Website, type: :model do
+describe Website do
   subject(:website) { build(:website) }
 
   describe 'validations' do

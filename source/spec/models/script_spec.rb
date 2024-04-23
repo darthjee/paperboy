@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe Script, type: :model do
+describe Script do
   subject(:script) do
     build(:script, content: content, external_url: external_url)
   end

@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe Website::UriQuery, type: :model do
+describe Website::UriQuery do
   subject(:query) { described_class.new(scope, url) }
 
   describe '#websites' do

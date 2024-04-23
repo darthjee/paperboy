@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe Website::UserScript, type: :model do
+describe Website::UserScript do
   subject(:user_script) { described_class.new(website) }
 
   let(:domain)   { 'localhost' }
