@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe WebsiteScript, type: :model do
+describe WebsiteScript do
   subject(:website_script) { build(:website_script) }
 
   describe 'validations' do

@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
-Magicka::Display.with_element(Magicka::NgPagination, :pagination)
-Magicka::Display.with_element(Magicka::Content, :textarea)
-Magicka::Form.with_element(Magicka::Textarea, :textarea)
+Magicka::Form.with_element('Magicka::NgSelect', :ng_select)
+Magicka::Display.with_element('Magicka::NgSelectText', :ng_select)
+Magicka::Display.with_element('Magicka::NgPagination', :pagination)
+Magicka::Display.with_element('Magicka::Content', :textarea)
+Magicka::Form.with_element('Magicka::Textarea', :textarea)
 
 module Magicka
   class Display < Aggregator

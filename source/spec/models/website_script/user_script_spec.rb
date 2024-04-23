@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe WebsiteScript::UserScript, type: :model do
+describe WebsiteScript::UserScript do
   subject(:user_script) { described_class.new(website_script) }
 
   let(:website_script) { create(:website_script, :content) }

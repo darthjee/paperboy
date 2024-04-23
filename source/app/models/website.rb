@@ -2,7 +2,7 @@
 
 class Website < ApplicationRecord
   PROTOCOLS          = %w[http https].freeze
-  MAX_PORT           = 2**16 - 1
+  MAX_PORT           = (2**16) - 1
   ALLOWED_ATTRIBUTES = %i[name domain port protocol].freeze
 
   has_many :scripts, class_name: :WebsiteScript
