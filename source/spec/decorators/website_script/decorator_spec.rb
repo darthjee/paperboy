@@ -31,7 +31,7 @@ describe WebsiteScript::Decorator do
         expect(decorator_json).to eq(expected_json)
       end
 
-      context 'when script has content', skip: 'Need to fix helper usage' do
+      context 'when script has content' do
         let(:type)       { :content }
         let(:url_helper) { Rails.application.routes.url_helpers }
 
