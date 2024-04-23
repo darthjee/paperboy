@@ -7,7 +7,7 @@ FactoryBot.define do
     sequence(:path) { |n| "/path/to/#{n}" }
 
     transient do
-      type {}
+      type { nil }
     end
 
     trait :external_url do

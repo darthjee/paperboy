@@ -134,7 +134,7 @@ describe LoginController do
       end
 
       context 'when user is not logged' do
-        let(:session) {}
+        let(:session) { nil }
 
         it { expect(response).not_to be_successful }
 
