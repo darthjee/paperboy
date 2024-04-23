@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe Script, type: :model do
+describe Script do
   subject(:script) do
     build(:script, content: content, external_url: external_url)
   end
@@ -26,7 +26,7 @@ describe Script, type: :model do
 
     it do
       expect(script).to validate_length_of(:content)
-        .is_at_most(2**16 - 1)
+        .is_at_most((2**16) - 1)
     end
 
     it do
