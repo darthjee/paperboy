@@ -1,4 +1,4 @@
-class EqualMatcher {
+EqualMatcher = {
   match(value, target) {
     return value == target;
   }
@@ -26,7 +26,7 @@ class PathMatcher {
 }
 
 var WebsiteScriptParser = {
-  matcher: new AsymetricMatcher(new EqualMatcher()),
+  matcher: new AsymetricMatcher(EqualMatcher),
   path_matcher: new AsymetricMatcher(new PathMatcher()),
 
   match(website_script) {
