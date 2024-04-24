@@ -1,4 +1,25 @@
+class EqualMatcher {
+  match(value, target) {
+    return value == target;
+  }
+}
+
+class AsymetricMatcher {
+  constructor(matcher) {
+    this.matcher = matcher;
+  }
+
+  match(value, target) {
+    if (!value || value == '') {
+      return true
+    }
+    return this.matcher.match(value, target);
+  }
+}
+
 var WebsiteScriptParser = {
+  matcher: new AsymetricMatcher(new EqualMatcher()),
+
   match(website_script) {
     var website = website_script.website,
         path = website_script.script.path;
@@ -7,30 +28,22 @@ var WebsiteScriptParser = {
   },
 
   match_path(path) {
-    return this.asymetric_match(path, window.location.href);
+    return this.matcher.match(path, window.location.href);
   },
 
   match_website(website) {
-    if (! this.asymetric_match(website.domain, window.location.hostname)) {
+    if (! this.matcher.match(website.domain, window.location.hostname)) {
       return false;
     }
 
-    if (! this.asymetric_match(website.port, window.location.port)) {
+    if (! this.matcher.match(website.port, window.location.port)) {
       return false;
     }
 
-    if (! this.asymetric_match(website.protocol, window.location.protocol)) {
+    if (! this.matcher.match(website.protocol, window.location.protocol)) {
       return false;
     }
 
     return true;
   },
-
-  asymetric_match(nullable_string, target) {
-    if (!nullable_string || nullable_string == '') {
-      return true
-    }
-
-    return nullable_string == target;
-  }
 }
