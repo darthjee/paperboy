@@ -2,7 +2,7 @@ EqualMatcher = {
   match(value, target) {
     return value == target;
   }
-}
+};
 
 class AsymetricMatcher {
   constructor(matcher) {
@@ -18,11 +18,19 @@ class AsymetricMatcher {
 }
 
 class PathMatcher {
-  match(value, target) {
-    var regexp = new(Regexp(value.replace("*", ".*")));
+  constructor(value) {
+    value ||= "";
 
-    return target.match(regexp);
+    this.regexp = new RegExp(value.replace("*", ".*"));
   }
+
+  match(target) {
+    return target.match(this.regexp);
+  }
+}
+
+PathMatcher.match = function(value, target) {
+  return new this(value).match(target);
 }
 
 var WebsiteScriptParser = {
