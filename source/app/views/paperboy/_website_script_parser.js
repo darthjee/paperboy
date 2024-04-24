@@ -17,8 +17,17 @@ class AsymetricMatcher {
   }
 }
 
+class PathMatcher {
+  match(value, target) {
+    var regexp = new(Regexp(value.replace("*", ".*")));
+
+    return target.match(regexp);
+  }
+}
+
 var WebsiteScriptParser = {
   matcher: new AsymetricMatcher(new EqualMatcher()),
+  path_matcher: new AsymetricMatcher(new PathMatcher()),
 
   match(website_script) {
     var website = website_script.website,
@@ -28,7 +37,7 @@ var WebsiteScriptParser = {
   },
 
   match_path(path) {
-    return this.matcher.match(path, window.location.href);
+    return this.path_matcher.match(path, window.location.href);
   },
 
   match_website(website) {
