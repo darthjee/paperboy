@@ -10,7 +10,7 @@ var WebsiteScriptParser = {
   },
 
   match_path(path) {
-    return this.path_matcher.match(path, window.location.href);
+    return this.path_matcher.match(path, window.location.pathname);
   },
 
   match_website(website) {
