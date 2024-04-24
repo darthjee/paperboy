@@ -1,4 +1,4 @@
-EqualMatcher = {
+var EqualMatcher = {
   match(value, target) {
     return value == target;
   }
@@ -11,7 +11,7 @@ class AsymetricMatcher {
 
   match(value, target) {
     if (!value || value == '') {
-      return true
+      return true;
     }
     return this.matcher.match(value, target);
   }

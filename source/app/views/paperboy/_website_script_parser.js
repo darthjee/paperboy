@@ -6,14 +6,14 @@ var WebsiteScriptParser = {
     var website = website_script.website,
         path = website_script.path;
 
-    return this.match_website(website) && this.match_path(path)
+    return this._matchWebsite(website) && this._matchPath(path);
   },
 
-  match_path(path) {
+  _matchPath(path) {
     return this.path_matcher.match(path, window.location.pathname);
   },
 
-  match_website(website) {
+  _matchWebsite(website) {
     if (! this.matcher.match(website.domain, window.location.hostname)) {
       return false;
     }
@@ -28,4 +28,4 @@ var WebsiteScriptParser = {
 
     return true;
   },
-}
+};
