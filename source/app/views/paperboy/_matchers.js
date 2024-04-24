@@ -1,6 +1,6 @@
 var EqualMatcher = {
   match(value, target) {
-    return value == target;
+    return value.toString() === target.toString();
   }
 };
 
@@ -10,7 +10,7 @@ class AsymetricMatcher {
   }
 
   match(value, target) {
-    if (!value || value == '') {
+    if (!value || value.toString() === '') {
       return true;
     }
     return this.matcher.match(value, target);
