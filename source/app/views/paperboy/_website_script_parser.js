@@ -1,10 +1,10 @@
 var WebsiteScriptParser = {
   matcher: new AsymetricMatcher(EqualMatcher),
-  path_matcher: new AsymetricMatcher(new PathMatcher()),
+  path_matcher: new AsymetricMatcher(PathMatcher),
 
   match(website_script) {
     var website = website_script.website,
-        path = website_script.script.path;
+        path = website_script.path;
 
     return this.match_website(website) && this.match_path(path)
   },
