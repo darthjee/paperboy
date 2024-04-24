@@ -3,10 +3,21 @@
 // @include      <%= user_script_wrapper.location %>
 // ==/UserScript==
 
+(function(PaperboyUserScript, undefined) {
+  if (PaperboyUserScript === undefined) {
+    window.PaperboyUserScript = {};
+  }
+})(window.PaperboyUserScript);
+
 (function() {
   'use strict';
 
+  <%= render partial: 'paperboy/matchers' %>
+  <%= render partial: 'paperboy/script_loader' %>
+
   <% user_script_wrapper.scripts.each do |website_script| %>
-    <%= website_script.content %>
+    ScriptLoader.load('<%= website_script.path %>', function() {
+      <%= website_script.content %>
+    });
   <% end %>
 })();

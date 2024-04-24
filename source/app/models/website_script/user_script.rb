@@ -14,6 +14,10 @@ class WebsiteScript < ApplicationRecord
       script.content&.html_safe
     end
 
+    def path
+      website_script.path&.html_safe
+    end
+
     def ==(other)
       return false unless other.is_a?(self.class)
 
