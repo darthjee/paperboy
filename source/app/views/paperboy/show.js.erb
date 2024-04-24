@@ -1,7 +1,7 @@
 (function(window) {
   window.PaperboyUserScript = {};
 
-  <%= render partial: 'path_parser' %>
+  <%= render partial: 'website_script_parser' %>
   <%= render partial: 'paperboy' %>
 
   PaperboyUserScript.scripts_url = '<%= website_scripts_url(format: :json, url: '--URL--') %>'
