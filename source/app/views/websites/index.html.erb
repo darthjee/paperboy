@@ -12,6 +12,8 @@
           <th scope="col">Domain</th>
           <th scope="col">Port</th>
           <th scope="col">Protocol</th>
+          <th scope="col">User Script</th>
+          <th scope="col">Edit</th>
         </thead>
         <tbody>
           <tr>
@@ -30,6 +32,11 @@
             <td>{{website.domain}}</td>
             <td>{{website.port}}</td>
             <td>{{website.protocol}}</td>
+            <td>
+              <%= angular_safe_link_to(:website_user_script, { website_id: "{{website.id}}" }) do %>
+                User Script
+              <% end %>
+            </td>
             <td>
               <%= angular_safe_link_to(:edit_website, { id: "{{website.id}}" }, class: "text-dark") do %>
                 edit
