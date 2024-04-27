@@ -33,7 +33,7 @@
             <td>{{website.port}}</td>
             <td>{{website.protocol}}</td>
             <td>
-              <%= angular_safe_link_to(:website_user_script, { website_id: "{{website.id}}" }) do %>
+              <%= link_to(website_user_script_safe_path(website_id: "{{website.id}}", format: "js")) do %>
                 User Script
               <% end %>
             </td>
