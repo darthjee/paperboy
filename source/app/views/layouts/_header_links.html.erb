@@ -14,4 +14,24 @@
       User Script
     <% end %>
   </li>
+  <li ng-hide="headerController.logged" class="nav-item p-2">
+    <a
+      ng-hide="headerController.ongoing"
+      data-toggle="modal"
+      href="#"
+      class="nav-link text-dark"
+      data-target="#login-modal">
+      Login
+    </a>
+  </li>
+  <li ng-show="headerController.logged"  class="nav-item p-2">
+    <a
+      ng-hide="headerController.ongoing"
+      data-toggle="modal"
+      href="#"
+      class="nav-link text-dark"
+      ng-click="headerController.logoff()">
+      Logoff
+    </a>
+  </li>
 </ul>
