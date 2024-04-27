@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   resources :scripts
   resources :websites do
-    get '/script.user' => :user_script
+    get '/script.user' => :user_script, as: :user_script
   end
   resources :website_scripts, defaults: { format: :json }, only: [:index]
 

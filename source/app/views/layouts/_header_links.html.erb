@@ -1,0 +1,37 @@
+<ul class="nav navbar-nav">
+  <li class="nav-item p-2">
+    <%= angular_safe_link_to(:websites, {}, class: 'nav-link text-dark') do %>
+      Websites
+    <% end %>
+  </li>
+  <li class="nav-item p-2">
+    <%= angular_safe_link_to(:scripts, {}, class: 'nav-link text-dark') do %>
+      Scripts
+    <% end %>
+  </li>
+  <li class="nav-item p-2">
+    <%= link_to(user_script_path(format: 'js'), class: 'nav-link text-dark') do %>
+      Download User Script
+    <% end %>
+  </li>
+  <li ng-hide="headerController.logged" class="nav-item p-2">
+    <a
+      ng-hide="headerController.ongoing"
+      data-toggle="modal"
+      href="#"
+      class="nav-link text-dark"
+      data-target="#login-modal">
+      Login
+    </a>
+  </li>
+  <li ng-show="headerController.logged"  class="nav-item p-2">
+    <a
+      ng-hide="headerController.ongoing"
+      data-toggle="modal"
+      href="#"
+      class="nav-link text-dark"
+      ng-click="headerController.logoff()">
+      Logoff
+    </a>
+  </li>
+</ul>
