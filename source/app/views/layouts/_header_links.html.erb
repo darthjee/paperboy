@@ -1,4 +1,4 @@
-<ul class="navbar-nav">
+<ul class="nav navbar-nav">
   <li class="nav-item p-2">
     <%= angular_safe_link_to(:websites, {}, class: 'nav-link text-dark') do %>
       Websites
@@ -7,6 +7,11 @@
   <li class="nav-item p-2">
     <%= angular_safe_link_to(:scripts, {}, class: 'nav-link text-dark') do %>
       Scripts
+    <% end %>
+  </li>
+  <li class="nav-item p-2">
+    <%= link_to(user_script_path(format: 'js'), class: 'nav-link text-dark') do %>
+      User Script
     <% end %>
   </li>
 </ul>
