@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         <%= user_script_wrapper.name %>
+// @name         Paperboy: <%= user_script_wrapper.name %>
 // @include      <%= user_script_wrapper.location %>
 // @match        <%= user_script_wrapper.location %>
 // ==/UserScript==
@@ -14,6 +14,7 @@
   'use strict';
 
   <%= render partial: 'paperboy/matchers' %>
+  <%= render partial: 'paperboy/website_script_parser' %>
   <%= render partial: 'paperboy/script_loader' %>
 
   <% user_script_wrapper.scripts.each do |website_script| %>

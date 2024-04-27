@@ -5,7 +5,7 @@ class ScriptLoader {
   }
 
   _match() {
-    return WebsiteScriptParser.path_matcher.match(path, window.location.pathname);
+    return WebsiteScriptParser.path_matcher.match(this.path, window.location.pathname);
   }
 
   call() {
