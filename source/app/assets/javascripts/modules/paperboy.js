@@ -4,7 +4,8 @@
     'cyberhawk',
     'kanto',
     'home',
-    'login'
+    'login',
+    'scripts'
   ]);
 
   module.config(['$httpProvider', function($httpProvider) {
