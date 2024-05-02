@@ -1,6 +1,6 @@
 (function(_, angular, Cyberhawk) {
   var app = angular.module("home/controller", [
-    "cyberhawk"
+    "cyberhawk/builder"
   ]);
 
   app.controller("Home.Controller", [
