@@ -3,7 +3,11 @@
     'cyberhawk/builder'
   ]);
 
+  function Controller(builder) {
+    builder.build(this);
+  }
+
   app.controller("Scripts.WebsitesController",[
-    'cyberhawk_builder', function(builder) { builder.build(this); }
+    'cyberhawk_builder', Controller
   ]);
 }(window._, window.angular, window.Cyberhawk));
