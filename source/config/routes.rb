@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
 
   resources :scripts do
-    resources :websites, defaults: { format: :json }, only: [:index, :create, :update]
+    resources :websites, module: :script, defaults: { format: :json }, only: [:index, :create, :update]
   end
 
   resources :websites do
