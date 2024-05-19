@@ -19,4 +19,6 @@ class Script < ApplicationRecord
   validates :content,
             absence: { message: EXCLUSIVE_CONTENT_MESSAGE },
             if: -> { external_url.present? }
+
+  has_many :website_scripts
 end

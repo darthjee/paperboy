@@ -7,5 +7,19 @@ class Script < ApplicationRecord
     protect_from_forgery except: %i[create show]
 
     resource_for :website_script, only: [:index, :create, :update]
+
+    private
+
+    def website_scripts
+      script.website_scripts
+    end
+
+    def script_id
+      params.require(:script_id)
+    end
+
+    def script
+      Script.find(script_id)
+    end
   end
 end
