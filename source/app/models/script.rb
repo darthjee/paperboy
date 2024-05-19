@@ -6,6 +6,8 @@ class Script < ApplicationRecord
   EXCLUSIVE_CONTENT_MESSAGE = 'Content and external url are mutually exclusive'
   ALLOWED_ATTRIBUTES = %i[name content external_url].freeze
 
+  has_many :website_scripts
+
   validates :name,
             presence: true,
             length: { maximum: 100 }
@@ -19,6 +21,4 @@ class Script < ApplicationRecord
   validates :content,
             absence: { message: EXCLUSIVE_CONTENT_MESSAGE },
             if: -> { external_url.present? }
-
-  has_many :website_scripts
 end
