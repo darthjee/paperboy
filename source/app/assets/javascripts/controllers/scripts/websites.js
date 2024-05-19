@@ -4,6 +4,13 @@
   ]);
 
   var ControllerMethods = {
+    _getPath() {
+      console.info(this.location.$$path);
+      if ( !this.path ) {
+        this.path = this.location.$$path.replace(/(\/edit)?$/, "/websites");
+      }
+      return this.path;
+    }
   };
 
   function Controller(builder) {
