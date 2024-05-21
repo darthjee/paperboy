@@ -2,12 +2,12 @@
 
 class WebsiteScript < ApplicationRecord
   class Decorator < ::ModelDecorator
+    include ExposeWebsite
+
     expose :id
-    expose :location
+    expose :location, override: false
     expose :script, decorator: Script::IndexDecorator
     expose :path
     expose :website, decorator: Website::Decorator
-
-    include ExposeWebsite
   end
 end
