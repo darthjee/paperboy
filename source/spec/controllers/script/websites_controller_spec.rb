@@ -10,8 +10,6 @@ describe Script::WebsitesController do
   end
 
   describe 'GET index' do
-    let(:decorator) { Script::IndexDecorator }
-
     let(:website_scripts_count) { 1 }
     let(:parameters) { { script_id: script.id } }
     let(:script) { create(:script) }
