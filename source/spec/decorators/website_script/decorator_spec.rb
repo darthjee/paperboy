@@ -10,14 +10,18 @@ describe WebsiteScript::Decorator do
 
   describe '#to_json' do
     context 'when object is one entity' do
-      let(:object) { create(:website_script, script: script) }
-      let(:website) { object.website }
-      let(:script) { create(:script, type) }
-      let(:type)   { :external_url }
+      let(:object)   { create(:website_script, script: script) }
+      let(:website)  { object.website }
+      let(:script)   { create(:script, type) }
+      let(:type)     { :external_url }
+      let(:location) do
+        "#{website.protocol}://#{website.domain}:#{website.port}/*"
+      end
 
       let(:expected_json) do
         {
           id: object.id,
+          location: location,
           path: object.path,
           script: {
             id: script.id,
@@ -50,6 +54,7 @@ describe WebsiteScript::Decorator do
         let(:expected_json) do
           {
             id: object.id,
+            location: location,
             path: object.path,
             script: {
               id: script.id,
@@ -104,6 +109,7 @@ describe WebsiteScript::Decorator do
         let(:expected_json) do
           {
             id: object.id,
+            location: location,
             path: object.path,
             errors: expected_errors,
             script: {
@@ -138,6 +144,7 @@ describe WebsiteScript::Decorator do
         object.map do |obj|
           {
             id: obj.id,
+            location:"#{obj.website.protocol}://#{obj.website.domain}:#{obj.website.port}/*",
             path: obj.path,
             script: {
               id: obj.script.id,
