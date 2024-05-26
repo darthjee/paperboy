@@ -6,7 +6,10 @@ class Script < ApplicationRecord
 
     protect_from_forgery except: %i[create show]
 
-    resource_for :website_script, only: %i[index create update]
+    resource_for :website_script,
+                 only: %i[index],
+                 paginated: true,
+                 per_page: 50
 
     private
 
