@@ -144,7 +144,7 @@ describe WebsiteScript::Decorator do
         object.map do |obj|
           {
             id: obj.id,
-            location:"#{obj.website.protocol}://#{obj.website.domain}:#{obj.website.port}/*",
+            location: "#{obj.website.protocol}://#{obj.website.domain}:#{obj.website.port}/*",
             path: obj.path,
             script: {
               id: obj.script.id,
