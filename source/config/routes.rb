@@ -8,7 +8,10 @@ Rails.application.routes.draw do
     get '/paperboy' => :show, as: :paperboy_script
   end
 
-  resources :scripts
+  resources :scripts do
+    resources :websites, module: :script, defaults: { format: :json }, only: %i[index]
+  end
+
   resources :websites do
     get '/script.user' => :user_script, as: :user_script
   end
