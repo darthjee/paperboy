@@ -45,7 +45,7 @@ describe ExposeWebsite do
     end
 
     context 'when protocol has not been defined' do
-      let(:protocol) { nil }
+      let(:protocol) { [nil, '', ' '].sample }
       let(:expected_protocol) { '*' }
 
       it 'returns an assertive string' do
@@ -54,7 +54,7 @@ describe ExposeWebsite do
     end
 
     context 'when domain has not been defined' do
-      let(:domain) { nil }
+      let(:domain) { [nil, '', ' '].sample }
       let(:expected_domain) { '*' }
 
       it 'returns an assertive string' do
@@ -63,7 +63,7 @@ describe ExposeWebsite do
     end
 
     context 'when port has not been defined' do
-      let(:port) { nil }
+      let(:port) { [nil, '', ' '].sample }
       let(:expected_port) { '*' }
 
       it 'returns an assertive string' do

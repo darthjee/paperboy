@@ -10,14 +10,14 @@ module ExposeWebsite
   private
 
   def domain
-    website.domain || '*'
+    website.domain.present? ? website.domain : '*'
   end
 
   def protocol
-    website.protocol || '*'
+    website.protocol.present? ? website.protocol : '*'
   end
 
   def port
-    website.port || '*'
+    website.port.present? ? website.port : '*'
   end
 end
