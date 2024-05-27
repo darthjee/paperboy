@@ -4,3 +4,8 @@
   <% end %>
 </form>
 
+<div ng-controller="Scripts.WebsitesController as swc">
+  <% magicka_form('swc.data') do |form| %>
+    <%= render partial: 'websites', locals: { form: form } %>
+  <% end %>
+</div>

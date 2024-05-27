@@ -19,7 +19,10 @@
     }, {
       routes: ["/websites", "/websites/new", "/websites/:id", "/websites/:id/edit"]
     }, {
-      routes: ["/scripts", "/scripts/new", "/scripts/:id", "/scripts/:id/edit"]
+      routes: ["/scripts", "/scripts/new", "/scripts/:id", "/scripts/:id/edit"],
+      config: {
+        controller: "Scripts.Controller"
+      }
     }];
     provider.$get().bindRoutes();
   }]);

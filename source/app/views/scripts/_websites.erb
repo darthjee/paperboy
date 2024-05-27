@@ -1,0 +1,27 @@
+<div class="card shadow-sm">
+  <div class="card-header">
+    <h4 class="my-0 font-weight-normal">
+      Websites
+    </h4>
+  </div>
+  <div class="card-body">
+    <table class="table">
+      <thead>
+        <th></th>
+        <th scope="col">Name</th>
+        <th scope="col">Matcher</th>
+      </thead>
+      <tbody>
+        <tr ng-repeat="website in swc.data">
+          <td>
+            {{website.website.id}}
+          </td>
+          <td>
+            {{website.website.name}}
+          </td>
+          <td>{{website.location}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
