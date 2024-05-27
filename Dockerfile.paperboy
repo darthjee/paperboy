@@ -1,4 +1,4 @@
-FROM darthjee/paperboy-base:0.0.4
+FROM darthjee/paperboy-base:0.0.5
 
 WORKDIR /home/app/app
 COPY --chown=app:app source/Gemfile* /home/app/app/
