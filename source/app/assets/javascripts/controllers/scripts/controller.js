@@ -5,6 +5,7 @@
 
   var ControllerMethods = {
     _buildCallback() {
+      Controller.on("/scripts/:id/edit", "saved", function() { console.info("saved") });
     }
   };
 
