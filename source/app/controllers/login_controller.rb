@@ -24,7 +24,7 @@ class LoginController < ApplicationController
   private
 
   def user
-    @user ||= User.login(login_params)
+    @user ||= User.login(**login_params)
   end
 
   def login_params

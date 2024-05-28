@@ -22,7 +22,7 @@ workflows:
 jobs:
   test:
     docker:
-      - image: darthjee/circleci_paperboy-base:0.0.4
+      - image: darthjee/circleci_paperboy-base:0.0.5
         environment:
           PAPERBOY_MYSQL_HOST: mysql
           PAPERBOY_MYSQL_PORT: 3306
@@ -65,7 +65,7 @@ jobs:
 
   checks:
     docker:
-      - image: darthjee/circleci_paperboy-base:0.0.4
+      - image: darthjee/circleci_paperboy-base:0.0.5
         environment:
           PAPERBOY_MYSQL_HOST: mysql
           PAPERBOY_MYSQL_PORT: 3306

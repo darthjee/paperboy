@@ -58,3 +58,13 @@ services:
     env_file: .env.production
     container_name: paperboy_production
     image: darthjee/production_paperboy
+
+  paperboy_circleci:
+    image: darthjee/circleci_paperboy-base
+    build:
+      context: .
+      dockerfile: Dockerfile.circleci_paperboy-base
+    container_name: paperboy_circleci
+    command: /bin/bash
+    environment:
+      - RAILS_ENV=test
