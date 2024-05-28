@@ -3,10 +3,6 @@ FROM darthjee/circleci_taa:1.4.0 as base
 
 ######################################
 
-USER root
-RUN apt-get update && apt-get install -y default-libmysqld-dev
-USER circleci
-
 FROM base as builder
 
 ADD source/Gemfile* /home/circleci/project/
