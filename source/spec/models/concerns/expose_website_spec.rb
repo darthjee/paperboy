@@ -28,9 +28,9 @@ describe ExposeWebsite do
     let(:expected_port)     { port }
     let(:attributes) do
       {
-        protocol: protocol,
-        domain: domain,
-        port: port
+        protocol:,
+        domain:,
+        port:
       }
     end
 

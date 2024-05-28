@@ -3,7 +3,7 @@
 require 'spec_helper'
 
 describe LoginController do
-  let(:user)     { create(:user, password: password) }
+  let(:user)     { create(:user, password:) }
   let(:login)    { user.login }
   let(:password) { 'password' }
 
@@ -16,7 +16,7 @@ describe LoginController do
   let(:parameters) do
     {
       login: {
-        login: login,
+        login:,
         password: request_password
       }
     }
@@ -142,7 +142,7 @@ describe LoginController do
       end
 
       context 'when user is logged' do
-        let(:session) { create(:session, user: user) }
+        let(:session) { create(:session, user:) }
 
         it { expect(response).to be_successful }
 
@@ -152,7 +152,7 @@ describe LoginController do
       end
 
       context 'when user is logged with expired session' do
-        let(:session) { create(:session, :expired, user: user) }
+        let(:session) { create(:session, :expired, user:) }
 
         it { expect(response).not_to be_successful }
 
@@ -162,7 +162,7 @@ describe LoginController do
   end
 
   describe 'DELETE logoff' do
-    let(:session) { create(:session, user: user) }
+    let(:session) { create(:session, user:) }
 
     before do
       controller.send(:cookies).signed[:session] = session.id

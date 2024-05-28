@@ -4,15 +4,15 @@ module Path
   class SafePath
     attr_reader :controller, :method
 
-    MATCHER = /^(\w*)_safe_path$/.freeze
+    MATCHER = /^(\w*)_safe_path$/
 
     def initialize(controller, method)
       @controller = controller
       @method = method
     end
 
-    def call_missing(*args)
-      safe_path(*args) if MATCHER =~ method && does_respond_to?
+    def call_missing(*)
+      safe_path(*) if MATCHER =~ method && does_respond_to?
     end
 
     def does_respond_to?
@@ -25,8 +25,8 @@ module Path
       @path_method ||= "#{MATCHER.match(method)[1]}_path"
     end
 
-    def safe_path(*args)
-      PathCaller.new(controller, path_method, *args).path
+    def safe_path(*)
+      PathCaller.new(controller, path_method, *).path
     end
   end
 end

@@ -4,14 +4,14 @@ require 'spec_helper'
 
 describe User do
   describe '.login' do
-    let!(:user)    { create(:user, password: password) }
+    let!(:user)    { create(:user, password:) }
     let(:password) { 'my_custom_password' }
     let(:login)    { user.login }
 
     let(:login_hash) do
       {
-        login: login,
-        password: password
+        login:,
+        password:
       }
     end
 
@@ -61,7 +61,7 @@ describe User do
   end
 
   describe '#verify_password!' do
-    let(:user)     { create(:user, password: password) }
+    let(:user)     { create(:user, password:) }
     let(:password) { 'my_custom_password' }
 
     context 'when password is correct' do

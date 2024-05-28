@@ -3,7 +3,7 @@
 require 'spec_helper'
 
 describe ActiveSetting do
-  subject(:active_setting) { build(:active_setting, key: key) }
+  subject(:active_setting) { build(:active_setting, key:) }
 
   let(:key) { SecureRandom.hex(16) }
 

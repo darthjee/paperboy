@@ -6,7 +6,7 @@ describe Session do
   describe 'scopes' do
     describe '.active' do
       let!(:session) do
-        create(:session, expiration: expiration)
+        create(:session, expiration:)
       end
 
       context 'when session has expiration in the future' do

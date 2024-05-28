@@ -182,10 +182,7 @@ describe WebsitesController do
         let(:website) { Website.last }
 
         let(:website_attributes) do
-          website.attributes.reject do |key, _|
-            %w[id created_at updated_at]
-              .include? key
-          end
+          website.attributes.except('id', 'created_at', 'updated_at')
         end
 
         let(:expected_website_attributes) do
@@ -280,7 +277,7 @@ describe WebsitesController do
     let(:website) { create(:website) }
 
     let!(:website_scripts) do
-      create_list(:website_script, 3, website: website, type: :content)
+      create_list(:website_script, 3, website:, type: :content)
     end
 
     before do

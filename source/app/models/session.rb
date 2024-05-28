@@ -12,7 +12,7 @@ class Session < ApplicationRecord
   def start_token
     10.times do
       self.token = SecureRandom.base64(48)
-      break unless self.class.where(token: token).any?
+      break unless self.class.where(token:).any?
     end
   end
 end

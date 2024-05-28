@@ -34,7 +34,7 @@ shared_examples 'a setting' do |field|
 
   context 'when only db is set' do
     before do
-      create(:active_setting, key: field, value: value)
+      create(:active_setting, key: field, value:)
     end
 
     it 'returns the value from db' do

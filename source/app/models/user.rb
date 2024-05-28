@@ -15,7 +15,7 @@ class User < ApplicationRecord
             length: { maximum: 100 }
 
   def self.login(login:, password:)
-    User.find_by!(login: login).verify_password!(password)
+    User.find_by!(login:).verify_password!(password)
   rescue ActiveRecord::RecordNotFound
     raise Paperboy::Exception::LoginFailed
   end

@@ -2,13 +2,13 @@
 
 # rubocop:disable Style/MissingRespondToMissing
 module ApplicationHelper
-  def angular_link_to(text, path, *args)
-    link_to(text, angular_path_to(path), *args)
+  def angular_link_to(text, path, *)
+    link_to(text, angular_path_to(path), *)
   end
 
-  def angular_safe_link_to(path_method, path_args = {}, *args, &block)
+  def angular_safe_link_to(path_method, path_args = {}, *, &)
     path = angular_path_to(path_method, path_args)
-    link_to(path, *args, &block)
+    link_to(path, *, &)
   end
 
   def angular_path_to(path_method, path_args = {})
@@ -18,8 +18,8 @@ module ApplicationHelper
     "##{path}"
   end
 
-  def method_missing(method, *args)
-    Path::SafePath.new(self, method).call_missing(*args) || super
+  def method_missing(method, *)
+    Path::SafePath.new(self, method).call_missing(*) || super
   end
 
   def respond_to?(method)
