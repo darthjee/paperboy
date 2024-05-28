@@ -31,19 +31,19 @@ describe ActiveSetting do
     context 'when key has spaces character' do
       let(:key) { 'some key' }
 
-      it { is_expected.to be_invalid }
+      it { is_expected.not_to be_valid }
     end
 
     context 'when key has dash character' do
       let(:key) { 'some-key' }
 
-      it { is_expected.to be_invalid }
+      it { is_expected.not_to be_valid }
     end
 
     context 'when key has number in the first character' do
       let(:key) { '0some_key' }
 
-      it { is_expected.to be_invalid }
+      it { is_expected.not_to be_valid }
     end
 
     context 'when key has number in the last character' do
