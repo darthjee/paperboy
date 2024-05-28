@@ -6,5 +6,8 @@ COPY --chown=app:app source/bower.json /home/app/app/
 
 RUN bundle install
 
+USER root
+RUN npm install -g yarn
+
 USER app
 RUN bower install
