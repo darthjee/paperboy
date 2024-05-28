@@ -9,7 +9,7 @@ Magicka::Form.with_element('Magicka::Textarea', :textarea)
 module Magicka
   class Display < Aggregator
     def button(**args)
-      LinkButton.render(renderer: renderer, **args)
+      LinkButton.render(renderer:, **args)
     end
   end
 end

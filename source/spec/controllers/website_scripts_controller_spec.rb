@@ -11,7 +11,7 @@ describe WebsiteScriptsController do
 
   describe 'GET index' do
     let(:website) do
-      create(:website, port: port, protocol: protocol, domain: domain)
+      create(:website, port:, protocol:, domain:)
     end
     let(:other_website) { create(:website) }
 
@@ -22,7 +22,7 @@ describe WebsiteScriptsController do
     let(:protocol)        { uri.scheme }
 
     let!(:website_scripts) do
-      create_list(:website_script, 3, website: website)
+      create_list(:website_script, 3, website:)
     end
 
     before { create(:website_script, website: other_website) }
@@ -31,11 +31,11 @@ describe WebsiteScriptsController do
       let(:expected_object) { WebsiteScript.all }
 
       let(:other_website) do
-        create(:website, port: nil, protocol: nil, domain: domain)
+        create(:website, port: nil, protocol: nil, domain:)
       end
 
       before do
-        get :index, params: { format: :json, url: url }
+        get :index, params: { format: :json, url: }
       end
 
       it { expect(response).to be_successful }
@@ -49,7 +49,7 @@ describe WebsiteScriptsController do
       let(:expected_object) { website_scripts }
 
       before do
-        get :index, params: { format: :json, url: url }
+        get :index, params: { format: :json, url: }
       end
 
       it { expect(response).to be_successful }
@@ -64,7 +64,7 @@ describe WebsiteScriptsController do
       let(:domain) { 'other.com' }
 
       before do
-        get :index, params: { format: :json, url: url }
+        get :index, params: { format: :json, url: }
       end
 
       it { expect(response).to be_successful }

@@ -17,7 +17,7 @@ describe Script::WebsitesController do
     render_views
 
     before do
-      create_list(:website_script, website_scripts_count, script: script)
+      create_list(:website_script, website_scripts_count, script:)
     end
 
     context 'when requesting json', :not_cached do

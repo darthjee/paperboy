@@ -44,7 +44,7 @@ module LoggedUser
     end
 
     def session_from_headers
-      active_sessions.find_by(token: token)
+      active_sessions.find_by(token:)
     end
 
     def session_id

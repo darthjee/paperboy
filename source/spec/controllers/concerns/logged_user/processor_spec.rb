@@ -9,7 +9,7 @@ describe LoggedUser::Processor do
   let(:cookies)    { instance_double(ActionDispatch::Cookies::CookieJar) }
   let(:headers)    { {} }
   let(:controller) do
-    instance_double(controller_class, cookies: cookies, headers: headers)
+    instance_double(controller_class, cookies:, headers:)
   end
 
   let(:signed_cookies) { {} }
@@ -66,7 +66,7 @@ describe LoggedUser::Processor do
 
     context 'when user is logged through cookie' do
       let(:session) do
-        create(:session, expiration: expiration, user: user)
+        create(:session, expiration:, user:)
       end
 
       before do
@@ -114,7 +114,7 @@ describe LoggedUser::Processor do
 
     context 'when user is logged through token' do
       let(:session) do
-        create(:session, expiration: expiration, user: user)
+        create(:session, expiration:, user:)
       end
 
       before do
@@ -159,7 +159,7 @@ describe LoggedUser::Processor do
 
   describe '#logoff' do
     let(:session) do
-      create(:session, expiration: expiration, user: user)
+      create(:session, expiration:, user:)
     end
 
     before do

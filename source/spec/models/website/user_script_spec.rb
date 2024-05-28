@@ -9,10 +9,10 @@ describe Website::UserScript do
   let(:port)     { 3000 }
   let(:protocol) { :http }
   let(:website) do
-    create(:website, domain: domain, port: port, protocol: protocol)
+    create(:website, domain:, port:, protocol:)
   end
   let!(:website_scripts) do
-    create_list(:website_script, 3, website: website)
+    create_list(:website_script, 3, website:)
   end
 
   describe '#name' do

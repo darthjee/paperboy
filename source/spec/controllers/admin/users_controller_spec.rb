@@ -181,16 +181,11 @@ describe Admin::UsersController do
         let(:user) { User.last }
 
         let(:user_attributes) do
-          user.attributes.reject do |key, _|
-            %w[id created_at updated_at encrypted_password salt]
-              .include? key
-          end
+          user.attributes.except('id', 'created_at', 'updated_at', 'encrypted_password', 'salt')
         end
 
         let(:expected_user_attributes) do
-          payload.stringify_keys.reject do |key, _|
-            key == 'password'
-          end
+          payload.stringify_keys.except('password')
         end
 
         it 'returns created user' do

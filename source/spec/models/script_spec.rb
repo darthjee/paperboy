@@ -4,7 +4,7 @@ require 'spec_helper'
 
 describe Script do
   subject(:script) do
-    build(:script, content: content, external_url: external_url)
+    build(:script, content:, external_url:)
   end
 
   let(:external_url) { 'www.site.com' }

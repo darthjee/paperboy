@@ -10,7 +10,7 @@ describe WebsiteScript::Decorator do
 
   describe '#to_json' do
     context 'when object is one entity' do
-      let(:object)   { create(:website_script, script: script) }
+      let(:object)   { create(:website_script, script:) }
       let(:website)  { object.website }
       let(:script)   { create(:script, type) }
       let(:type)     { :external_url }
@@ -21,7 +21,7 @@ describe WebsiteScript::Decorator do
       let(:expected_json) do
         {
           id: object.id,
-          location: location,
+          location:,
           path: object.path,
           script: {
             id: script.id,
@@ -54,7 +54,7 @@ describe WebsiteScript::Decorator do
         let(:expected_json) do
           {
             id: object.id,
-            location: location,
+            location:,
             path: object.path,
             script: {
               id: script.id,
@@ -78,7 +78,7 @@ describe WebsiteScript::Decorator do
       end
 
       context 'when object is invalid but object has not been validated' do
-        let(:object) { build(:website_script, script: script) }
+        let(:object) { build(:website_script, script:) }
         let(:script) do
           build(:script, name: nil)
         end
@@ -89,7 +89,7 @@ describe WebsiteScript::Decorator do
       end
 
       context 'when object is invalid and object has been validated' do
-        let(:object) { build(:website_script, script: script) }
+        let(:object) { build(:website_script, script:) }
         let(:script) do
           build(:script, name: nil)
         end
@@ -109,7 +109,7 @@ describe WebsiteScript::Decorator do
         let(:expected_json) do
           {
             id: object.id,
-            location: location,
+            location:,
             path: object.path,
             errors: expected_errors,
             script: {

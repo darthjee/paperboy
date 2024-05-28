@@ -12,8 +12,8 @@ class Website < ApplicationRecord
     def websites
       scope.where(
         domain: uri.host,
-        port: port,
-        protocol: protocol
+        port:,
+        protocol:
       )
     end
 

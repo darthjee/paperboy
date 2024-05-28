@@ -187,10 +187,7 @@ describe ScriptsController do
         let(:script) { Script.last }
 
         let(:script_attributes) do
-          script.attributes.reject do |key, _|
-            %w[id created_at updated_at]
-              .include? key
-          end
+          script.attributes.except('id', 'created_at', 'updated_at')
         end
 
         let(:expected_script_attributes) do
