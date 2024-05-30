@@ -27,6 +27,14 @@ cyberhawk@0.7.0:
     querystring "0.2.1"
     underscore ">= 1.13.6"
 
+johto@0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/johto/-/johto-0.0.1.tgz#e06564730ab97c143a006db97b99252a5c0fe3bd"
+  integrity sha512-ma/YtfQbVJZlpNcEdK4lsBu6jpcSVEQ9FkpG5nez4iT894rhlVA5QlU41SRyGu8H6YW2U3LFNmKcqQuto/ThJg==
+  dependencies:
+    angular "1.4.8"
+    angular-route "1.4.8"
+
 jquery@3.6.1:
   version "3.6.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.6.1.tgz#fab0408f8b45fc19f956205773b62b292c147a16"
@@ -37,12 +45,7 @@ js-cookie@2.2.1:
   resolved "https://registry.yarnpkg.com/js-cookie/-/js-cookie-2.2.1.tgz#69e106dc5d5806894562902aa5baec3744e9b2b8"
   integrity sha512-HvdH2LzI/EAZcUwA8+0nKNtWHqS+ZmijLA30RwZA0bo7ToCckjK5MkGhjED9KoRcXO6BaGI3I9UIzSA1FKFPOQ==
 
-kanto@0.0.2:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/kanto/-/kanto-0.0.1.tgz#64c30960d2931ee64268e9e153beae3331cc87b8"
-  integrity sha512-yJ3Fh3hqWWjE7RgxEUWmlRNDDJjVrvJew/W4nFibswSZdcx3ZKman+CXqIrUSRDFL6Hkn2z7J+WqMIdZbifuAA==
-
-querystring@0.2.1, querystring@3.46.1:
+querystring@0.2.1:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/querystring/-/querystring-0.2.1.tgz#40d77615bb09d16902a85c3e38aa8b5ed761c2dd"
   integrity sha512-wkvS7mL/JMugcup3/rMitHmd9ecIGd2lhFhK9N3UUQ450h66d1r3Y9nvXzQAW1Lq+wyx61k/1pfKS5KuKiyEbg==
