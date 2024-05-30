@@ -2,10 +2,55 @@
 # yarn lockfile v1
 
 
+angular-route@1.4.8:
+  version "1.4.8"
+  resolved "https://registry.yarnpkg.com/angular-route/-/angular-route-1.4.8.tgz#dffb646fa7ea10f29870875d60bd3729fe217cb7"
+  integrity sha512-UABhsJkrLWUwQnA4mPvLtBhHjp+JGeWOeREfd+Ah+KlYFVmuF3O2Yv0d1Tgy2KtJGFIRhXxgCNboPsn5VE/aqA==
+
 angular@1.4.8:
   version "1.4.8"
   resolved "https://registry.yarnpkg.com/angular/-/angular-1.4.8.tgz#f4573d5019d21ebf44a6b5c28a14fbd9d5967449"
   integrity sha512-Ku266I8YeRwtdnBWv3gAQPGxCZ4ASQAibbe+kHH5z6aNswv8juQrfGnWcwnvZ3iuL0ge2VgZe8OtrcvXBRufgg==
+
+bootstrap@4.6.2:
+  version "4.6.2"
+  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.6.2.tgz#8e0cd61611728a5bf65a3a2b8d6ff6c77d5d7479"
+  integrity sha512-51Bbp/Uxr9aTuy6ca/8FbFloBUJZLHwnhTcnjIeRn2suQWsWzcuJhGjKDB5eppVte/8oCdOL3VuwxvZDUggwGQ==
+
+cyberhawk@0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/cyberhawk/-/cyberhawk-0.7.0.tgz#2e7e0848e11592b4215920b317df317a8bce74dd"
+  integrity sha512-jvmUow/RS2hANscPRJGXBu14wdGRTfG/jP+2Y7XYPmehg2okPAGISGoV934MqTdROPLNRdZEWa5jwLeJ0t9HWQ==
+  dependencies:
+    angular "1.4.8"
+    angular-route "1.4.8"
+    querystring "0.2.1"
+    underscore ">= 1.13.6"
+
+jquery@3.6.1:
+  version "3.6.1"
+  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.6.1.tgz#fab0408f8b45fc19f956205773b62b292c147a16"
+  integrity sha512-opJeO4nCucVnsjiXOE+/PcCgYw9Gwpvs/a6B1LL/lQhwWwpbVEVYDZ1FokFr8PRc7ghYlrFPuyHuiiDNTQxmcw==
+
+js-cookie@2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/js-cookie/-/js-cookie-2.2.1.tgz#69e106dc5d5806894562902aa5baec3744e9b2b8"
+  integrity sha512-HvdH2LzI/EAZcUwA8+0nKNtWHqS+ZmijLA30RwZA0bo7ToCckjK5MkGhjED9KoRcXO6BaGI3I9UIzSA1FKFPOQ==
+
+kanto@0.0.2:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/kanto/-/kanto-0.0.1.tgz#64c30960d2931ee64268e9e153beae3331cc87b8"
+  integrity sha512-yJ3Fh3hqWWjE7RgxEUWmlRNDDJjVrvJew/W4nFibswSZdcx3ZKman+CXqIrUSRDFL6Hkn2z7J+WqMIdZbifuAA==
+
+querystring@0.2.1, querystring@3.46.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/querystring/-/querystring-0.2.1.tgz#40d77615bb09d16902a85c3e38aa8b5ed761c2dd"
+  integrity sha512-wkvS7mL/JMugcup3/rMitHmd9ecIGd2lhFhK9N3UUQ450h66d1r3Y9nvXzQAW1Lq+wyx61k/1pfKS5KuKiyEbg==
+
+underscore@1.13.6, "underscore@>= 1.13.6":
+  version "1.13.6"
+  resolved "https://registry.yarnpkg.com/underscore/-/underscore-1.13.6.tgz#04786a1f589dc6c09f761fc5f45b89e935136441"
+  integrity sha512-+A5Sja4HP1M08MaXya7p5LvjuM7K6q/2EaC0+iovj/wOcMsTzMvDFbasi/oSapiwOlt252IqsKqPjCl7huKS0A==
 
 yarn@^1.22.22:
   version "1.22.22"
