@@ -16,7 +16,7 @@
 //= require underscore
 //= require angular/angular
 //= require angular-route/angular-route
-//= require kanto/kanto
+//= require johto/johto
 //= require querystring
 //= require cyberhawk/cyberhawk
 //= require bootstrap
