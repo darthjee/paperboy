@@ -17,7 +17,7 @@
 //= require angular/angular
 //= require angular-route/angular-route
 //= require johto/johto
-//= require querystring
+//= require query-string
 //= require cyberhawk/cyberhawk
 //= require bootstrap
 //= require_tree ./utils
