@@ -22,7 +22,7 @@ workflows:
 jobs:
   test:
     docker:
-      - image: darthjee/circleci_paperboy-base:0.0.5
+      - image: darthjee/circleci_paperboy-base:0.1.0
         environment:
           PAPERBOY_MYSQL_HOST: mysql
           PAPERBOY_MYSQL_PORT: 3306
@@ -45,11 +45,8 @@ jobs:
           name: Prepare Coverage Test Report
           command: cc-test-reporter before-build
       - run:
-          name: Bundle Install
-          command: bundle install
-      - run:
-          name: Bower Install
-          command: bundle exec rake bower:install
+          name: Yarn Install
+          command: yarn install
       - run:
           name: Wait for database
           command: scripts/wait_for_db.sh
@@ -65,7 +62,7 @@ jobs:
 
   checks:
     docker:
-      - image: darthjee/circleci_paperboy-base:0.0.5
+      - image: darthjee/circleci_paperboy-base:0.1.0
         environment:
           PAPERBOY_MYSQL_HOST: mysql
           PAPERBOY_MYSQL_PORT: 3306

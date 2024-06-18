@@ -16,8 +16,8 @@
 //= require underscore
 //= require angular/angular
 //= require angular-route/angular-route
-//= require kanto/kanto
-//= require querystring
+//= require johto/johto
+//= require cyberhawk/querystring
 //= require cyberhawk/cyberhawk
 //= require bootstrap
 //= require_tree ./utils
