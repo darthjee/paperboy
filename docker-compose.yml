@@ -60,7 +60,7 @@ services:
     image: darthjee/production_paperboy
     build:
       context: .
-      dockerfile: Dockerfile.paperboy
+      dockerfile: Dockerfile.production_paperboy
 
   paperboy_circleci:
     image: darthjee/circleci_paperboy-base
