@@ -1,7 +1,7 @@
 (function(angular) {
   var module = angular.module("paperboy");
 
-  module.config(["johtoProvider", function(provider) {
+  module.config(["kantoProvider", function(provider) {
     provider.defaultConfig = {
       controller: "Cyberhawk.Controller",
       controllerAs: "gnc",

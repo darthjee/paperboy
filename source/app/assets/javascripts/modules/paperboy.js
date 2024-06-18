@@ -2,7 +2,7 @@
   var module = angular.module('paperboy', [
     'global',
     'cyberhawk',
-    'johto',
+    'kanto',
     'home',
     'login',
     'scripts'

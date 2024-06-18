@@ -299,6 +299,39 @@ Style/StringChars:
 Style/SwapValues:
   Enabled: true
 
+Capybara/MatchStyle:
+  Enabled: true
+
+Capybara/NegationMatcher:
+  Enabled: true
+
+Capybara/SpecificActions:
+  Enabled: true
+
+Capybara/SpecificFinders:
+  Enabled: true
+
+Capybara/SpecificMatcher:
+  Enabled: true
+
+FactoryBot/AssociationStyle:
+  Enabled: true
+
+FactoryBot/ConsistentParenthesesStyle:
+  Enabled: true
+
+FactoryBot/FactoryAssociationWithStrategy:
+  Enabled: false
+
+FactoryBot/FactoryNameStyle:
+  Enabled: true
+
+FactoryBot/RedundantFactoryOption:
+  Enabled: true
+
+FactoryBot/SyntaxMethods:
+  Enabled: true
+
 RSpec/BeEmpty:
   Enabled: true
 
@@ -350,6 +383,21 @@ RSpec/SubjectDeclaration:
 RSpec/VerifiedDoubleReference:
   Enabled: true
 
+RSpecRails/AvoidSetupHook:
+  Enabled: true
+
+RSpecRails/HaveHttpStatus:
+  Enabled: true
+
+RSpecRails/InferredSpecType:
+  Enabled: true
+
+RSpecRails/MinitestAssertions:
+  Enabled: true
+
+RSpecRails/TravelAround:
+  Enabled: true
+
 RSpec/MultipleMemoizedHelpers:
   Enabled: false
 
@@ -357,7 +405,19 @@ Style/SuperWithArgsParentheses: # new in 1.58
   Enabled: true
 Style/YAMLFileRead: # new in 1.53
   Enabled: true
+Capybara/ClickLinkOrButtonStyle: # new in 2.19
+  Enabled: true
+Capybara/RedundantWithinFind: # new in 2.20
+  Enabled: true
+Capybara/RSpec/HaveSelector: # new in 2.19
+  Enabled: true
 Capybara/RSpec/PredicateMatcher: # new in 2.19
+  Enabled: true
+FactoryBot/ExcessiveCreateList: # new in 2.25
+  Enabled: true
+FactoryBot/IdSequence: # new in 2.24
+  Enabled: true
+RSpecRails/NegationBeValid: # new in 2.23
   Enabled: true
 RSpec/EmptyMetadata: # new in 2.24
   Enabled: true
