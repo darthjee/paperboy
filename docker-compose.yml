@@ -58,6 +58,9 @@ services:
     env_file: .env.production
     container_name: paperboy_production
     image: darthjee/production_paperboy
+    build:
+      context: .
+      dockerfile: Dockerfile.production_paperboy
 
   paperboy_circleci:
     image: darthjee/circleci_paperboy-base
