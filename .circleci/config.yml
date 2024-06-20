@@ -45,6 +45,9 @@ jobs:
           name: Prepare Coverage Test Report
           command: cc-test-reporter before-build
       - run:
+          name: Bundle Install
+          command: bundle install
+      - run:
           name: Yarn Install
           command: yarn install
       - run:
