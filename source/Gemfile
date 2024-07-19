@@ -27,7 +27,7 @@ gem 'darthjee-core_ext', '>= 2.0.0'
 gem 'magicka', '~> 1.1.0'
 gem 'nokogiri', '1.16.5'
 gem 'sinclair', '~> 2.1.1'
-gem 'tarquinn', '~> 0.2.0'
+gem 'tarquinn', '~> 0.3.0'
 gem 'zyra',     '1.2.0'
 
 group :development, :test do
