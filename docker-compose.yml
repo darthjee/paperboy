@@ -1,7 +1,7 @@
 version: '3'
 services:
   paperboy_mysql:
-    image: mysql:5.7
+    image: mysql:9.3.0
     container_name: paperboy_mysql
     env_file: .env
     environment:
